@@ -26,7 +26,7 @@ class Solution {
         // if linklist is odd
         if(countnodes %2 == 1){
              int c = 0;
-        while (f.next != null ){
+        while (f.next != null && f !=null){
              f= f.next.next;
              s = s.next;
              c++;
