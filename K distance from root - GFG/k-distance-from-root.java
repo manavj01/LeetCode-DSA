@@ -118,19 +118,21 @@ class Node
 class Tree
 {
      // Recursive function to print right view of a binary tree.
-     ArrayList<Integer> list = new ArrayList<>();
-     ArrayList<Integer> Kdistance(Node root, int k)
+      ArrayList<Integer> Kdistance(Node root, int k)
      {
-         if(root == null ) return new ArrayList<Integer>();
-         if(k == 0){
-             list.add(root.data);
+          ArrayList<Integer> ans = new ArrayList<>();
+          return fun(root,ans,k,0);
+     }
+     ArrayList<Integer> fun(Node root, ArrayList<Integer> ans, int k, int h){
+         if(h == k && root != null){
+             ans.add(root.data);
+             return ans;
          }
-         Kdistance(root.left,k-1);
-         
-          Kdistance(root.right,k-1);
-         
-         
-         return list;
-         
+         if(root == null){
+             return ans;
+         }
+         fun(root.left,ans,k,h+1);
+         fun(root.right,ans,k,h+1);
+         return ans;
      }
 }
