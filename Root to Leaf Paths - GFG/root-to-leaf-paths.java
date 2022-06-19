@@ -149,7 +149,7 @@ class Tree{
             return;
         }
         
-        helper(root.left,path,new ArrayList<>( ways));
+        helper(root.left,path,new ArrayList<>(ways));
         helper(root.right,path,ways);
         // ways.remove(ways.size()-1);
     }
