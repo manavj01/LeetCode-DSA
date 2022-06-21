@@ -17,7 +17,8 @@ class Solution {
     public boolean findTarget(TreeNode root, int k) {
        
         
-      ArrayList<Integer> list = dfs(root, new ArrayList<Integer>());
+      ArrayList<Integer> list = new ArrayList<>();
+          dfs(root, list);
         
         int i =0;
         int j = list.size()-1;
@@ -37,15 +38,15 @@ class Solution {
        
     }
     
-         public ArrayList<Integer> dfs (TreeNode root, ArrayList<Integer> list){
+         public void dfs (TreeNode root, ArrayList<Integer> list){
         
-        if(root == null) return null ;
+        if(root == null) return  ;
         
         dfs(root.left,list);   
         list.add(root.val);
         dfs(root.right,list);
         
-        return list;
+    
 
     }
 }
