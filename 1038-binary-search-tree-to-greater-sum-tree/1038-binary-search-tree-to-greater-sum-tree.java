@@ -14,20 +14,23 @@
  * }
  */
 class Solution {
-    int sum = 0;
     public TreeNode bstToGst(TreeNode node) {
-         trav(node);
+        int sum = 0;
+
+         trav(node,sum);
         return node;
     }
-    void trav(TreeNode root)
+   public int trav(TreeNode root,int sum)
     {
-        if(root==null)
-            return;
+        if(root==null) return sum;
         
-        trav(root.right);
+       sum =  trav(root.right,sum);
+        
         sum += root.val;
         root.val = sum;
         
-        trav(root.left);
+      sum =  trav(root.left,sum);
+       
+        return sum;
     }
 }
