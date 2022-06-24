@@ -14,13 +14,8 @@
  * }
  */
 class Solution {
-    // public  class BSTPair {
-    //     boolean isBst;
-    //     int min;
-    //     int max;
-    // }
+    
     public boolean isValidBST(TreeNode root) {
-        
        return isBSTChecker(
                     root, 
                     Long.MIN_VALUE, 
