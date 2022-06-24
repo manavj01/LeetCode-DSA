@@ -115,7 +115,7 @@ class Solution{
      public static  class BalPair {
         boolean isBST;
         long min;
-        long max;
+        int max;
         Node root;
         int size;
 
@@ -123,32 +123,42 @@ class Solution{
     // Return the size of the largest sub-tree which is also a BST
     static int largestBst(Node root)
     {
-        if(isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE))
-        {
-            return sizeof(root);
+        // Write your code here
+        BalPair bp = isBal(root);
+        return bp.size;
+        
+    }
+    public static BalPair isBal(Node node){
+        if (node == null){
+            BalPair bp = new BalPair();
+            bp.min = Integer.MAX_VALUE;
+            bp.max = Integer.MIN_VALUE;
+            bp.isBST = true;
+            bp.root = null;
+            bp.size=0;
+            return bp;
         }
-        int left = largestBst(root.left);
-        int right = largestBst(root.right);
-        return Math.max(left,right);
+
+        BalPair lp = isBal(node.left);
+        BalPair rp = isBal(node.right);
+
+        BalPair mp = new BalPair();
+        mp.isBST = lp.isBST && rp.isBST && (node.data > lp.max && node.data < rp.min);
+        mp.min = Math.min(node.data, Math.min(lp.min, rp.min));
+        mp.max = Math.max(node.data, Math.max(lp.max,rp.max));
+
+        if (mp.isBST){
+            mp.root = node;
+            mp.size = lp.size + rp.size+1;
+        }else if(lp.size > rp.size){
+            mp.root = lp.root;
+            mp.size = lp.size;
+        }else{
+            mp.root = rp.root;
+            mp.size = rp.size;
+        }
+
+        return mp;
     }
-    static boolean isBST(Node root,int min,int max)
-    {
-        if(root == null)
-            return true;
-        if(root.data<=min || root.data>=max)
-            return false;
-        boolean left = isBST(root.left,min,root.data);
-        boolean right = isBST(root.right,root.data,max);
-        return left && right;
-    }
-    static int sizeof(Node root)
-    {
-        if(root == null)
-            return 0;
-        int left = sizeof(root.left);
-        int right = sizeof(root.right);
-        return 1+left+right;
-    }
-    
     
 }
