@@ -8,8 +8,8 @@ class Solution {
         
         for(int i = 0 ; i < mat.length; i++){
             sum = sum + mat[i][mat.length - i -1];
+            
         }
-        
         if(mat.length % 2 == 1){
          sum = sum - mat[mat.length/2][mat.length/2];            
         }
