@@ -5,10 +5,10 @@ class Solution {
         for( int i = 0 ; i < mat.length ; i++){
             sum = sum + mat[i][i];
         }
-        
+        int j = mat.length-1;
         for(int i = 0 ; i < mat.length; i++){
-            sum = sum + mat[i][mat.length - i -1];
-            
+            sum = sum + mat[i][j];
+            j--;
         }
         if(mat.length % 2 == 1){
          sum = sum - mat[mat.length/2][mat.length/2];            
