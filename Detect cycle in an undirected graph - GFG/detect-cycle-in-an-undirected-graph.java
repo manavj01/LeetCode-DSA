@@ -44,10 +44,11 @@ class Solution {
     // Function to detect cycle in an undirected graph.
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         
-        boolean[] vis = new boolean[V+1];
-        for(int i = 0 ; i < V; i++){
-            if(!vis[i]){
-                if(cycleBfs(i,adj, vis)){
+        boolean[] vis = new boolean[V + 1];
+        for (int i = 0; i < V; i++) {
+            Pair mp = new Pair(i, -1);
+            if (!vis[i]) {
+                if (cycleDfs(mp, i, adj, vis)) {
                     return true;
                 }
             }
@@ -55,27 +56,18 @@ class Solution {
         return false;
         
     }
-    public boolean cycleBfs(int src, ArrayList<ArrayList<Integer>> adj, boolean[] visited ){
-        
-        Queue<Pair> que = new LinkedList<>();
-        que.add(new Pair (src,-1));
-        visited[src] = true;
-        
-        while(!que.isEmpty()){
-         Pair mp = que.poll();
-         int node = mp.node;
-         int par  = mp.prev;
-         
-         for(Integer it : adj.get(node)){
-             if(!visited[it]){
-                 que.add(new Pair(it,node));
-                 visited[it] = true;
-             }else if(par != it){
-                 return true;
-             }
-         }
-         
+   public  boolean cycleDfs(Pair mp, int src, ArrayList<ArrayList<Integer>> adj, boolean[] vis) {
+        vis[src] = true;
+
+        for (Integer it : adj.get(src)) {
+
+            if (!vis[it]) {
+                Pair child = new Pair(it, mp.node);
+               if (cycleDfs(child, it, adj, vis)) return true;
+            } else if (it != mp.prev && vis[it]) {
+                return true;
+            }
         }
-         return false;
+        return false;
     }
 }
