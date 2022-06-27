@@ -32,7 +32,7 @@ class GFG {
 
 
 class Solution {
-     public  class Pair {
+    public  class Pair {
         int node;
         int prev;
 
@@ -41,40 +41,41 @@ class Solution {
             this.prev = prev;
         }
     }
-
     // Function to detect cycle in an undirected graph.
-    public  boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
-
-        boolean[] vis = new boolean[V + 1];
-        for (int i = 0; i < V; i++) {
-            if (!vis[i]) {
-                if (cycleBfs(i, adj, vis)) {
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        
+        boolean[] vis = new boolean[V+1];
+        for(int i = 0 ; i < V; i++){
+            if(!vis[i]){
+                if(cycleBfs(i,adj, vis)){
                     return true;
                 }
             }
         }
         return false;
+        
     }
-
-    public  boolean cycleBfs(int src, ArrayList<ArrayList<Integer>> adj, boolean[] vis) {
-
-
+    public boolean cycleBfs(int src, ArrayList<ArrayList<Integer>> adj, boolean[] visited ){
+        
         Queue<Pair> que = new LinkedList<>();
-        que.add(new Pair(src, -1));
-        vis[src] = true;
-        while (!que.isEmpty()) {
-            Pair mp = que.poll();
-            int node = mp.node;
-            int par = mp.prev;
-            for (Integer it : adj.get(node)) {
-                if (!vis[it]) {
-                    que.add(new Pair(it, node));
-                    vis[it] = true;
-                } else if (par != it) {
-                    return true;
-                }
-            }
+        que.add(new Pair (src,-1));
+        visited[src] = true;
+        
+        while(!que.isEmpty()){
+         Pair mp = que.poll();
+         int node = mp.node;
+         int par  = mp.prev;
+         
+         for(Integer it : adj.get(node)){
+             if(!visited[it]){
+                 que.add(new Pair(it,node));
+                 visited[it] = true;
+             }else if(par != it){
+                 return true;
+             }
+         }
+         
         }
-        return false;
+         return false;
     }
 }
