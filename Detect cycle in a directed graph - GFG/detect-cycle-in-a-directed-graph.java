@@ -54,14 +54,13 @@ class Solution {
                 dfsVis[it] = true;
                if (dfs(it,vis,dfsVis,adj)) return true;
                
-            }else {
-                if (dfsVis[it]){
+            }else if (dfsVis[it]){
                     return true;
                 }
             }
-        }
+        
 
-dfsVis[src] = false;
+        dfsVis[src] = false;
         return false;
     }
 }
