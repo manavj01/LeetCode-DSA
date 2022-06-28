@@ -50,8 +50,7 @@ class Solution {
 
         for (Integer it : adj.get(src)){
             if(!vis[it]){
-                vis[it] = true;
-                dfsVis[it] = true;
+                
                if (dfs(it,vis,dfsVis,adj)) return true;
                
             }else if (dfsVis[it]){
