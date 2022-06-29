@@ -50,7 +50,7 @@ class Solution {
         return topo;
 
     }
-    public    boolean detectCycleDFS(int V,  ArrayList<ArrayList<Integer>> adj) {
+    public  boolean detectCycleDFS(int V,  ArrayList<ArrayList<Integer>> adj) {
         boolean[] vis = new boolean[V];
         boolean[] dfsVis = new boolean[V];
 
@@ -61,7 +61,7 @@ class Solution {
         }
         return false;
     }
-    public   boolean dfs(int src, boolean[] vis, boolean[] dfsVis,  ArrayList<ArrayList<Integer>> adj) {
+    public boolean dfs(int src, boolean[] vis, boolean[] dfsVis,  ArrayList<ArrayList<Integer>> adj) {
 
         vis[src] = true;
         dfsVis[src] = true;
