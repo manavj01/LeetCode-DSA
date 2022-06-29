@@ -7,6 +7,7 @@ class Solution {
         for (int[] prerequisite : prerequisites) {
             adj.get(prerequisite[0]).add(prerequisite[1]);
         }
+        
         int [] topolist = topoSortBFS(adj,numCourses);
         
         int i = 0, j = topolist.length - 1;
