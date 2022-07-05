@@ -33,25 +33,20 @@ class GFG
 
 //User function Template for Java
 class Solution{
-    static  long maximumSumSubarray(int k, ArrayList<Integer> arr,int N){
-        int i=0;
-        int j=0;
-        long sum=0;
-        long max=Long.MIN_VALUE;
-       while(j<arr.size()){
-           if(j-i+1<k){
-               sum+=arr.get(j);
-               j++;
-           }
-           else{
-               sum+=arr.get(j);
-               max=Math.max(sum,max);
-               sum-=arr.get(i);
-               j++;
-               i++;
-           }
-       }
-       
-       return max;
+    static  long maximumSumSubarray(int K, ArrayList<Integer> Arr,int N){
+        int i = 0, j = 0;
+        long sum = 0, maxi=Long.MIN_VALUE;
+        while(j < N){
+            sum += Arr.get(j);
+            if(j-i==K-1){
+                maxi=Math.max(sum,maxi);
+                j++;
+                sum-=Arr.get(i);
+                i++;
+            }else{
+                j++;
+            }
+        }
+        return maxi;
     }
 }
