@@ -1,16 +1,6 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
-        HashMap<Character,Integer> hm = new HashMap<>();
-        
-//         for(int i =0 ; i < s.length(); i++){
-//           Integer count = hm.get(s.charAt(i));
-//            if (count == null) {
-//            hm.put(s.charAt(i), 1);
-//            }
-//            else {
-//             hm.put(s.charAt(i), count + 1);
-//            }
-//         }
+       
     int[] orig = new int[26];    
     // int[] anag = new int[26];
     
