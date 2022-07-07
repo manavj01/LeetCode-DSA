@@ -11,8 +11,8 @@ class Solution {
 //             hm.put(s.charAt(i), count + 1);
 //            }
 //         }
-    char[] orig = new char[26];    
-    char[] anag = new char[26];
+    int[] orig = new int[26];    
+    int[] anag = new int[26];
     
         for(int i =0 ; i < s.length(); i++){
             orig[s.charAt(i)-'a']++;
