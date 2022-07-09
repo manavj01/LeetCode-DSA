@@ -1,32 +1,44 @@
 class Solution {
     public int[] maxSubsequence(int[] nums, int k) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>(k);
-        
-        for(int num : nums){
-            if( pq.size()==k){
-                if(pq.peek()<num){
-                    pq.poll();
-                    pq.offer(num);
-                }
-            }else{
-            pq.offer(num);
-                
-            }
+          // We are defining the min priority queue  
+   PriorityQueue<int[]> q = new PriorityQueue<>((a,b)-> (a[0]-b[0])); 
+    
+    // Add element with index to priority queue
+    for(int i=0; i<nums.length; i++)
+    {
+        q.offer(new int[]{nums[i],i});
+        if(q.size()> k)
+        {
+            q.poll();
         }
-        System.out.println(pq);
-       // int[] res = new int[k]; int idx=0;
-        ArrayList<Integer> res = new ArrayList<>(k);
-        for(int i =0; i < nums.length; i++){
-            if(pq.contains(nums[i])){
-                // res[idx++]=nums[i];
-                res.add(nums[i]);
-                pq.remove(nums[i]);
-            }
+    }
+    
+    // Set to keep index
+    Set<Integer> index = new HashSet<>();
+    
+    
+    // Add the index in the set since index are unique 
+    while(!q.isEmpty())
+    {
+        int[] top = q.poll();
+        index.add(top[1]);
+    }
+    
+    // Final result add here
+    int[] result = new int[k];
+    
+    
+    // Just add the element in the result for those index present in SET
+    int p =0;
+    for(int i=0; i< nums.length; i++)
+    {
+        if(index.contains(i))
+        {
+            result[p] = nums[i];
+            ++p;
         }
-        
-        
-        return res.stream().mapToInt(i -> i).toArray() ;
-        // return res;
-        
+    }
+    
+    return result;
     }
 }
