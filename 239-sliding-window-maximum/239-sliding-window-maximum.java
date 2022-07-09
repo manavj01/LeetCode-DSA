@@ -1,9 +1,8 @@
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
       Deque<Integer> q = new ArrayDeque<>();  // stores *indices*
-        // List<Integer> res = new ArrayList<>();
-        int n = nums.length;
-        int[] result = new int[n-k+1];
+        List<Integer> res = new ArrayList<>();
+        // int[] result = new int[n-k+1];
         int ri=0;
         for (int i = 0; i < nums.length; i++) {
             while (!q.isEmpty() && nums[q.getLast()] <= nums[i]) {
@@ -16,11 +15,9 @@ class Solution {
             }
             // if window has k elements add to results (first k-1 windows have < k elements because we start from empty window and add 1 element each iteration)
             if (i >= k - 1) {
-                // res.add(nums[q.peek()]);
-                result[ri++] = nums[q.peek()];
+                res.add(nums[q.peek()]);
             }
         }
-        // return res.stream().mapToInt(i->i).toArray();      
-        return result;
+        return res.stream().mapToInt(i->i).toArray();            
     }
 }
