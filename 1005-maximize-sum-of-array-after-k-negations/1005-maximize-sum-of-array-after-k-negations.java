@@ -7,16 +7,15 @@ class Solution {
         }
          int sum=0;
         
-        for(int i =0 ; i < nums.length; i++){
-            if(k>0  && pq.peek() < 0){
-                int a = pq.poll();
-                pq.add(-a);
-                k--;
-            }
+        while(k-- >0){
+            pq.add(-pq.poll());
+            
         }
-        int min = pq.peek();
+        
+        // int min = pq.peek();
         for(int i =0 ; i < nums.length; i++) sum += pq.poll();
         
-        return sum - k%2 * min* 2 ;
+        // return sum - k%2 * min* 2 ;
+        return sum;
     }
 }
