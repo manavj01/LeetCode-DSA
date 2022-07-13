@@ -1,3 +1,4 @@
+// aproach 1
 public void setZeroes(int[][] matrix) {
 ArrayList<Integer> rarr = new ArrayList<>();
 ArrayList<Integer> carr = new ArrayList<>();
@@ -19,9 +20,4 @@ matrix[row][c]=0;
 }
 for(int r =0;r < matrix.length;r++){
 matrix[r][col]=0;
-}
-}
-System.out.println(rarr);
-System.out.println(carr);
-​
 }
