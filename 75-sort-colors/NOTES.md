@@ -26,3 +26,8 @@ arr[idx++] = 2;
 blue2--;
 }
 }
+// aproach 2
+public  void sortColors(int[] arr) {
+int low = 0;
+int mid = 0;
+int high = arr.length - 1;
