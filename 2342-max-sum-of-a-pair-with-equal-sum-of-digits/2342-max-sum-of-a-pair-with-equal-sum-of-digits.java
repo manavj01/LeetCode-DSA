@@ -1,28 +1,34 @@
 class Solution {
      public int maximumSum(int[] nums) {
-        int max = -1;
-        HashMap<Integer,Integer>map = new HashMap<>();
-        for(int i = 0; i < nums.length; i++){
-            int sum = sumOfDigits(nums[i]);
-            if(!map.containsKey(sum)){
-                map.put(sum, nums[i]);
+        
+         HashMap<Integer,Integer> map = new HashMap<>();
+         int max =-1;
+         
+        for(int i =0 ; i < nums.length; i++){
+            int sumOfNum = sum(nums[i]);
+            
+            if(!map.containsKey(sumOfNum)){
+                map.put(sumOfNum,nums[i]);
             }else{
-                max = Math.max(max, nums[i] + map.get(sum));
-                map.put(sum, Math.max(nums[i], map.get(sum)));
+                max = Math.max(max, nums[i] + map.get(sumOfNum));
+                map.put(sumOfNum, Math.max(map.get(sumOfNum),nums[i]));
             }
-        }
-        return max;
+        } 
+         
+         
+         
+         return max;
     }
-                                
-    public int sumOfDigits(int n){
-        if(n < 10){
-            return n;
+    
+    public int sum(int num){
+        if(num < 10) return num;
+        
+        int sum =0;
+        while(num > 0){
+            sum += num%10;
+            num /= 10; 
         }
-        int sum = 0;
-        while(n > 0){
-            sum += n % 10;
-            n = n / 10;
-        }
+        
         return sum;
     }
 }
