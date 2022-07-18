@@ -12,7 +12,7 @@ public  class Pair {
         }
     }
 
-   public  void rotate(int[][] matrix) {
+   public  void rotate1(int[][] matrix) {
         Pair i = new Pair(0, 0);
         Pair j = new Pair(0, matrix.length - 1);
         Pair k = new Pair(matrix.length - 1, matrix.length - 1);
@@ -54,6 +54,24 @@ public  class Pair {
 
             l.x--;
             l.y++;
+        }
+    }
+     public  void rotate(int[][] matrix) {
+        int s = 0, e = matrix.length - 1;
+        while (s < e) {
+            int[] temp = matrix[s];
+            matrix[s] = matrix[e];
+            matrix[e] = temp;
+            s++;
+            e--;
+        }
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = i + 1; j < matrix[i].length; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
         }
     }
 }
