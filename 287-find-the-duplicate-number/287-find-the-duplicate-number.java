@@ -5,13 +5,12 @@ class Solution {
             freq[a]++;
         }
         
-        int ret=0;
-        for (int i=0; i < freq.length;i++){
+        int i;
+        for ( i=0; i < freq.length;i++){
             if (freq[i]>1){
-                ret= i;
                 break;
             }
         }
-        return ret;
+        return i;
     }
 }
