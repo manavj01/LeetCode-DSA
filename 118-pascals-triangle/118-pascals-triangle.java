@@ -1,6 +1,7 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
-         List<List<Integer>> res = new ArrayList<>();
+         
+        List<List<Integer>> res = new ArrayList<>();
 
         for (int i = 0; i < numRows; i++) {
             Integer[] arr = new Integer[i + 1];
@@ -20,7 +21,6 @@ class Solution {
             }
             res.add(Arrays.asList(arr));
         }
-
 
         return res;
     }
