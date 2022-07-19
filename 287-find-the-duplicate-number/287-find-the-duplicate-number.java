@@ -4,6 +4,7 @@ class Solution {
         for (int a : arr){
             freq[a]++;
         }
+        
         int ret=0;
         for (int i=0; i < freq.length;i++){
             if (freq[i]>1){
