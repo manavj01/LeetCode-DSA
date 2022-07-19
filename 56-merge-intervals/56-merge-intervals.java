@@ -13,11 +13,7 @@ class Solution {
 
 
         public int compareTo(Interval other) {
-           if (this.start != other.start) {
-                return this.start - other.start;
-            } else {
-                return this.end - other.end;
-            }
+          return this.start-other.start;
         }
     }
     
