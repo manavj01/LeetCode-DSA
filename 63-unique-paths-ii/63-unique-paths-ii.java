@@ -1,24 +1,22 @@
 class Solution {
 
-    public int uniquePathsWithObstacles(int[][] arr) {
-       int n = arr.length;
-        int m = arr[0].length;
-        int[][] dp = new int[n][m];
-        for(int i=0; i < n; i++){
-            for(int j =0; j < m;j++){
-                if(arr[i][j] != 1){
-                    dp[i][j] =-1;
-                }else{
-                    dp[i][j] = -2;
+      public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int m = obstacleGrid.length;
+        int n = obstacleGrid[0].length;
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        for (int i = 0; i < m ; i++) {
+            for (int j = 1; j <=n; j++) {
+                if(obstacleGrid[i][j-1] == 1){
+                    dp[j] = 0;
+                }else {
+                    dp[j] += dp[j -1];
                 }
             }
         }
-        if(arr[n-1][m-1] == 1){
-            return 0;
-        }
-
-        return uniquePaths3Helper(0, 0, n, m, dp);
+        return dp[n];
     }
+    
     
      public static int uniquePaths3Helper(int i, int j, int n, int m, int[][] dp) {
         if (i == (n - 1) && j == (m - 1)) {
