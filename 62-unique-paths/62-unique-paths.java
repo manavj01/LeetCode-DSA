@@ -1,6 +1,6 @@
 class Solution {
     
-        public static int uniquePaths(int n, int m) {
+        public  int uniquePaths(int n, int m) {
         int N = n + m - 2;
         int r = n - 1;
 //        or
