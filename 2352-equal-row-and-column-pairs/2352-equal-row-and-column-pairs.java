@@ -1,5 +1,5 @@
 class Solution {
-    public int equalPairs(int[][] grid) {
+     public int equalPairs(int[][] grid) {
         int n = grid.length;
         int count = 0;
         int trans[][] = new int[n][n];
