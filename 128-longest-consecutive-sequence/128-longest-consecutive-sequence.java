@@ -5,9 +5,9 @@ class Solution {
   
   PriorityQueue<Integer> pq = new PriorityQueue<>();
 
-int c = 1; // LCS Counter, set to 1 because a single digit is also consecutive.
+    int c = 1; // LCS Counter, set to 1 because a single digit is also consecutive.
  
- for (int a : A) {
+     for (int a : A) {
         pq.offer(a);
     }
 
