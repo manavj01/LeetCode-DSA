@@ -31,24 +31,47 @@ class Solution {
 
 //     return max == Integer.MIN_VALUE ? 1 : max;
 // }
-     public  int longestConsecutive(int[] A) {
-         if(A.length ==0) return 0;
-        Arrays.sort(A);
-        int c = 1;
-        int maxc = Integer.MIN_VALUE;
-        for (int i = 1; i < A.length; i++) {
-            int a = A[i - 1];
-            int b = A[i];
-            if (a == b){
-                continue;
-            } else if (a + 1 == b) {
-                c++;
-            } else {
-                c = 1;
+//      public  int longestConsecutive(int[] A) {
+//          if(A.length ==0) return 0;
+//         Arrays.sort(A);
+//         int c = 1;
+//         int maxc = Integer.MIN_VALUE;
+//         for (int i = 1; i < A.length; i++) {
+//             int a = A[i - 1];
+//             int b = A[i];
+//             if (a == b){
+//                 continue;
+//             } else if (a + 1 == b) {
+//                 c++;
+//             } else {
+//                 c = 1;
+//             }
+//             maxc = Math.max(c, maxc);
+//         }
+
+//         return maxc == Integer.MIN_VALUE ? 1 : maxc;
+//     }
+    public static int longestConsecutive(int[] A) {
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int a : A) {
+            set.add(a);
+        }
+        int longestStreak = 0;
+        for (int num : A) {
+            if (!set.contains(num - 1)) {
+                int currentNum = num;
+                int currentStreak = 1;
+
+                while (set.contains(currentNum + 1)) {
+                    currentNum += 1;
+                    currentStreak += 1;
+                }
+                longestStreak = Math.max(longestStreak, currentStreak);
             }
-            maxc = Math.max(c, maxc);
         }
 
-        return maxc == Integer.MIN_VALUE ? 1 : maxc;
+        return longestStreak;
+
     }
 }
