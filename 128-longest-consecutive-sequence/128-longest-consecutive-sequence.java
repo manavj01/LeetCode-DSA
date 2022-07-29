@@ -52,7 +52,7 @@ class Solution {
 //         return maxc == Integer.MIN_VALUE ? 1 : maxc;
 //     }
     public  int longestConsecutive(int[] A) {
-        HashSet<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
 
         for (int a : A) {
             set.add(a);
