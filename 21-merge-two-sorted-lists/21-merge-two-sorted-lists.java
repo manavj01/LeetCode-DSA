@@ -50,7 +50,7 @@ class Solution {
             head.next = temp;
             head = head.next;
         }
-        head.next = null;
+        
         
         return ret_head;
     }
