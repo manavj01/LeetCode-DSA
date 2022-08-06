@@ -9,49 +9,32 @@
  * }
  */
 class Solution {
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        if(list1 == null) return list2;
-        if(list2 == null) return list1;
-        ListNode head = new ListNode();
-        ListNode head1 = list1;
-        ListNode head2 = list2;
-        ListNode ret_head = head;
-        while (head1 != null && head2 != null){
-            if (head1.val <= head2.val){
-                ListNode node = new ListNode();
-                
-                head.val = head1.val;
-            if(head1.next != null){
-                head.next = node;
-                head = head.next;
-            }    
-                head1 = head1.next;
-            }else {
-            ListNode node = new ListNode();
-                head.val = head2.val;
-                if(head2.next != null){
-                head.next = node;
-                head = head.next;
-                }
-                head2 = head2.next;
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+         if (l1 == null) return l2;
+        if (l2 == null) return l1;
+
+        if (l1.val > l2.val) {
+            ListNode temp = l1;
+            l1 = l2;
+            l2 = temp;
+        }
+
+
+        ListNode res_node = l1;
+
+        while (l1 != null && l2 != null) {
+            ListNode tmp = null;
+            while (l1 != null && l1.val <= l2.val) {
+                tmp = l1;
+                l1 = l1.next;
             }
+            tmp.next = l2;
+
+            //swap
+            ListNode temp = l1;
+            l1 = l2;
+            l2 = temp;
         }
-        while (head1 != null){
-            ListNode temp = new ListNode(0);
-            temp.val = head1.val;
-            head.next = temp;
-            head = head.next;
-            head1 = head1.next;
-        }
-        while (head2 != null){
-            ListNode temp = new ListNode(0);
-            temp.val = head2.val;
-            head2 = head2.next;
-            head.next = temp;
-            head = head.next;
-        }
-        
-        
-        return ret_head;
+        return res_node;
     }
 }
