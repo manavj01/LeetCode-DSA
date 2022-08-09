@@ -25,6 +25,6 @@ public class Solution {
                 tempB = tempB.next;
             }
         }
-        return tempA;
+        return tempB;
     }
 }
