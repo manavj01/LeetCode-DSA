@@ -17,10 +17,10 @@ class Solution {
         
         for(String s :map1.keySet()){
             if(map1.get(s)==1){
-                if(map2.get(s) != null){
-                    if(map2.get(s) == 1){
+                if(map2.get(s) != null && map2.get(s) == 1){
+                   
                         c++;
-                    }
+                    
                 }
             }
         }
