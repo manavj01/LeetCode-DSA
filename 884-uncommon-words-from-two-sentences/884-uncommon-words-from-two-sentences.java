@@ -25,11 +25,13 @@ class Solution {
         
       
 //         return res.toArray(new String[res.size()]);
-         Map<String, Integer> count = new HashMap<>();
-        for (String s : (A + " " + B).split("\\s")) { 
-             count.put(s, count.getOrDefault(s, 0) + 1); 
+         Set<String> distinct = new HashSet<>(), com = new HashSet<>();
+        for (String s : (A + " " + B).split("\\s")) {
+            if (com.contains(s) || !distinct.add(s)) { 
+                distinct.remove(s); com.add(s); 
+            }
         }
-        return count.entrySet().stream().filter(e -> e.getValue() == 1).map(e -> e.getKey()).toArray(String[]::new);
+        return distinct.toArray(new String[distinct.size()]);
 
     }
 }
