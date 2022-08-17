@@ -1,7 +1,7 @@
 class Solution {
     public void rotate(int[] nums, int k) {
          k  = k % nums.length;
-         if(nums == null || nums.length < 2){
+         if(k ==0 ||nums == null || nums.length < 2){
         return;
     }
         reverse(nums,0,nums.length-1);        
