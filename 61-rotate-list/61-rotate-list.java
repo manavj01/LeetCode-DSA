@@ -22,13 +22,13 @@ class Solution {
         k = k % size;
        if (size == 1 || k == 0) return head;
         
-        ListNode newHead = head;
+        ListNode ptr2 = head;
         for (int i = 0; i < size - k - 1; i++) {
-            newHead = newHead.next;
+            ptr2 = ptr2.next;
         }
         ptr1.next = head;
-        head = newHead.next;
-        newHead.next = null;
+        head = ptr2.next;
+        ptr2.next = null;
         
         return head;
     }
