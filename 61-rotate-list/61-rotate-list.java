@@ -20,7 +20,7 @@ class Solution {
         }
 
         k = k % size;
-//        if (size == 1 || k == 0) return head;
+       if (size == 1 || k == 0) return head;
         
         ListNode newHead = head;
         for (int i = 0; i < size - k - 1; i++) {
