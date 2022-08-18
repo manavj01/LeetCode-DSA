@@ -12,7 +12,7 @@ class Solution {
     public ListNode swapNodes(ListNode head, int k) {
         if(head == null) return null;
         ListNode temp = head;
-                ListNode a = new ListNode();
+        ListNode a = new ListNode();
 
         int size =0;
         while(temp != null){
@@ -30,14 +30,12 @@ class Solution {
           
             if(i == size-k+1){
                 b = temp;
-              // temp.val = a.val;  
             } 
             temp = temp.next;
         }
         int value = a.val;
         a.val = b.val;
         b.val = value;
-        System.out.println(a.val + " " + b.val);
         return head;
     }
 }
