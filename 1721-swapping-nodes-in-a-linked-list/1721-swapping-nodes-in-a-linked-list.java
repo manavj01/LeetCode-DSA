@@ -12,19 +12,22 @@ class Solution {
     public ListNode swapNodes(ListNode head, int k) {
         if(head == null) return null;
         ListNode temp = head;
+                ListNode a = new ListNode();
+
         int size =0;
         while(temp != null){
+            
             size++;
+              if(size==k){
+                a = temp;
+            }
             temp = temp.next;
         }
         temp = head;
-        ListNode a = new ListNode();
         ListNode b = new ListNode();
         
         for(int i=1; i<= size; i++){
-            if(i==k){
-                a = temp;
-            }
+          
             if(i == size-k+1){
                 b = temp;
               // temp.val = a.val;  
