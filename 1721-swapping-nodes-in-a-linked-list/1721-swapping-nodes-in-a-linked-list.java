@@ -10,62 +10,57 @@
  */
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
-
-    if(head == null) {
-		return head;
-	}
+      
+        ListNode fn = head;
+        ListNode fnp = null;
+        ListNode sn = head;
+        ListNode snp = null;
+        ListNode temp = head;
+        ListNode prev = null;
+        
+        int m = k;
+        int n = size(head)-k+1;
+        
+        while(temp != null){
+            
+            if(m-- > 0){
+                fnp = prev;
+                fn = temp;
+            }
+            if(n-- > 0){
+                snp = prev;
+                sn = temp;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+        
+       if(fnp != null) {
+        fnp.next = sn;
+        
+       }else{
+            head = sn;
+        }
+        
+        if(snp != null) {
+            snp.next = fn;
+        }
+        else{
+            head = fn;
+        }
+        
+        ListNode temp1 = sn.next;
+        sn.next = fn.next;
+        fn.next = temp1;
+        return head;
+    }
     
-    ListNode temp = head;
-    ListNode prev = null;
-	ListNode firstNode = null;
-	ListNode firstNodePrev = null;
-	ListNode secondNode = null;
-	ListNode secondNodePrev = null;
-	
-	int n = length(head) - k + 1;    	
-	int m = k;
-	while(temp != null) {
-		if(m-- > 0) {
-			firstNodePrev = prev;
-			firstNode = temp;
-		}
-		
-		if(n-- > 0) {
-			secondNodePrev = prev;
-			secondNode = temp;
-		}
-        prev = temp;
-		temp = temp.next;
-	}
-    
-    if(firstNodePrev != null) {
-        firstNodePrev.next = secondNode;
+    public int size(ListNode head){
+        int size =0;
+        while(head != null){
+            size++;
+            head = head.next;
+        }
+        return size;
     }
-    else{
-        head = secondNode;
-    }
-    
-    if(secondNodePrev != null) {
-        secondNodePrev.next = firstNode;
-    }
-    else{
-        head = firstNode;
-    }
-    
-    ListNode temp1=secondNode.next;
-    secondNode.next=firstNode.next;
-    firstNode.next=temp1;
-    return head;  	
-}
-
-public int length(ListNode head) {
-    ListNode temp = head;
-    int count = 0;
-    while (temp != null)
-    {
-        count++;
-        temp = temp.next;
-    }
-    return count;
-}
 }
