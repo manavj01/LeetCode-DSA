@@ -1,18 +1,20 @@
 class Solution {
-    public int heightChecker(int[] heights) {
-        int[] arr = new int[heights.length];
-        for(int i=0; i<heights.length; i++){
-            arr[i] = heights[i];
-        }
-        Arrays.sort(arr);
-        int c =0;
-        for(int i =0 ; i < heights.length; i++){
-            if(arr[i] != heights[i]){
-                c++;
-            }
+   public int heightChecker(int[] heights) {         
+        // perform a bucket-sort
+        int[] bucket = new int[101];
+        for(int number : heights) {
+            bucket[number]++;
         }
         
-        return c;
+        // check the ammount of disparities between the input array and the bucket
+        int count = 0, index = 0;
+        for(int i = 1; i <= 100; i++) {
+            while(bucket[i] > 0) {
+                if(i != heights[index++]) count++;
+                bucket[i]--;
+            }
+        }
+        return count;
     }
    
 }
