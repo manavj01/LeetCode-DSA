@@ -4,7 +4,7 @@ class Solution {
         return nums;
     }
     public  void quickSort(int[] arr , int lo, int hi ){
-        if(lo >= hi){
+        if(lo > hi){
             return;
         }
         int pivot = arr[hi];
