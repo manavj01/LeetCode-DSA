@@ -4,22 +4,19 @@ class Solution {
         int[] prefixMax = new int[n];
         int[] suffixMax = new int[n];
 
-//        int max = height[0];
-//
-//        for (int i = 0; i < n; i++) {
-//            max = Math.max(max, height[i]);
-//            prefixMax[i] = max;
-//        }
-        int max = height[n - 1];
+        int max = height[0];
+
+        for (int i = 0; i < n; i++) {
+            max = Math.max(max, height[i]);
+            prefixMax[i] = max;
+        }
+        max = height[n - 1];
         for (int i = n - 1; i >= 0; i--) {
             max = Math.max(max, height[i]);
             suffixMax[i] = max;
         }
         int area =0;
-         max = height[0];
         for (int i=0; i<n; i++){
-            max = Math.max(max, height[i]);
-            prefixMax[i] = max;
             area += Math.min(prefixMax[i],suffixMax[i])-height[i];
         }
 
