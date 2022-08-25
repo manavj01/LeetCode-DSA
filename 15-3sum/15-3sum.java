@@ -3,12 +3,14 @@ class Solution {
        List<List<Integer>> ret = new ArrayList<>();
         int n = nums.length;
         Arrays.sort(nums);
-
-        for (int i = 0; i < nums.length - 2; i++) {
+if (nums.length < 3 || nums[0] > 0 || nums[n - 1] < 0) {
+            return ret;
+        }
+        for (int i = 0; i < n - 2; i++) {
             if (i != 0 && nums[i - 1] == nums[i]) continue;
 
             int lo = i + 1;
-            int hi = nums.length - 1;
+            int hi = n - 1;
             while (lo < hi) {
                 if (nums[lo] + nums[hi] < -nums[i]) {
                     lo++;
