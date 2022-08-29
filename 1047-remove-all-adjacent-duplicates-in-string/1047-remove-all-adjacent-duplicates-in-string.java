@@ -1,12 +1,22 @@
 class Solution {
     public String removeDuplicates(String s) {
-        int i = 0, n = s.length();
-        char[] res = s.toCharArray();
-        for (int j = 0; j < n; ++j, ++i) {
-            res[i] = res[j];
-            if (i > 0 && res[i - 1] == res[i]) // count = 2
-                i -= 2;
+        // int i = 0, n = s.length();
+        // char[] res = s.toCharArray();
+        // for (int j = 0; j < n; ++j, ++i) {
+        //     res[i] = res[j];
+        //     if (i > 0 && res[i - 1] == res[i]) // count = 2
+        //         i -= 2;
+        // }
+        // return new String(res, 0, i);
+        
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (sb.length() > 0 && sb.charAt(sb.length() - 1) == c) {
+                sb.deleteCharAt(sb.length() - 1);
+            } else {
+                sb.append(c);
+            }
         }
-        return new String(res, 0, i);
+        return sb.toString();
     }
 }
