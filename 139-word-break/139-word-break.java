@@ -1,9 +1,6 @@
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
-        if(wordDict.size()==1){
-            if(wordDict.contains(s))return true;
-            else return false;
-        }
+       
         int[] dp = new int[s.length()];
 
         for (int i = 0; i < dp.length; i++) {
