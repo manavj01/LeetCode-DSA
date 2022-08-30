@@ -1,18 +1,23 @@
 class Solution {
-   public List<String> wordBreak(String s, List<String> wordDict) {
-        List<String> res=new ArrayList<String>();
-        recur(s,wordDict,res,"",0);
-        return res;
+   public static List<String> wordBreak(String s, List<String> wordDict) {
+        ArrayList<String> list = new ArrayList<>();
+
+        solve(wordDict, list, s, "");
+
+        return list;
     }
-    public void recur(String s, List<String> wordDict,List<String> res,String cur,int idx){
-        if(idx==s.length()){
-            res.add(cur.substring(0,cur.length()-1));
+
+    public static void solve(List<String> wordDict, ArrayList<String> list, String str, String ans) {
+        if (str.length() == 0) {
+            
+            list.add(ans.trim());
             return;
         }
-        for(int i=idx;i<s.length();i++){
-            String temp=s.substring(idx,i+1);
-            if(wordDict.contains(temp)){
-                recur(s,wordDict,res,cur+temp+" ",i+1);
+        for (int i = 0; i < str.length(); i++) {
+            String left = str.substring(0, i + 1);
+            if (wordDict.contains(left)) {
+                String right = str.substring(i + 1);
+                solve(wordDict, list, right, ans + left + " ");
             }
         }
     }
