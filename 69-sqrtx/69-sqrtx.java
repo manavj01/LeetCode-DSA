@@ -1,21 +1,23 @@
 class Solution {
-    public int mySqrt(int x) {
-        if(x <= 1) return x;
-        int start = 1;
-        int end = x/2;
-        
-        while(start < end) {
-            // start is not always moving and hence we can get stuck in infinite loop with mid calculation
-            // Adding 1 to mid everytime to ensure we always move the mid
-            int mid = (start + (end-start)/2) + 1;
-            
-            // use division instead of multiplication to avoid overflow
-            int div = x/mid;
-            if(div == mid) return mid;
-            if(div > mid) start = mid;
-            else end = mid-1;
+    public int mySqrt(int number) {
+        double low = 1;
+        double high = number;
+        double eps = 1e-6;
+
+        while ((high - low) > eps) {
+            double mid = (low + high) / 2.0;
+            if (multiply(mid, 2) < number) {
+                low = mid;
+            } else high = mid;
         }
-        
-        return start;
+
+        return (int) high;
+    }
+     public static double multiply(double number, int n) {
+        double ans = 1.0;
+        for (int i = 1; i <= n; i++) {
+            ans *= number;
+        }
+        return ans;
     }
 }
