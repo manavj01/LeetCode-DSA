@@ -1,23 +1,27 @@
 class Solution {
     public int singleNonDuplicate(int[] arr) {
-        
-        int i=0;
-        int j = arr.length-2;
-        
-        while(i<j){
-            int mid = i +(j-i)/2;
-            
-            if(mid %2 == 0 && arr[mid]== arr[mid+1]){
-                i = mid+2;
-            }else if(mid %2 == 1 && arr[mid]== arr[mid-1]){
-                i = mid+1;
-            }else{
-                j=mid;
+       int low = 0;
+        int high = arr.length - 2;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (mid % 2 ==0) {
+
+                if (arr[mid] != arr[mid + 1]) {
+                    high = mid - 1;
+                } else low = mid + 1;
+            } else {
+                if (arr[mid] == arr[mid+1]){
+                    high = mid-1;
+                }else {
+                    low = mid+1;
+                }
             }
         }
-        
-        
-        return arr[i];
+
+
+        return arr[low];
          
         // int elem = 0;
         // for (int num : arr) {
