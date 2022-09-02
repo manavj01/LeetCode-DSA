@@ -10,7 +10,7 @@ class Solution {
 //             }
 //         }
 //         return que.peek();
-Arrays.sort(nums);
+Arrays.parallelSort(nums);
         return nums[nums.length-k];
         
     }
