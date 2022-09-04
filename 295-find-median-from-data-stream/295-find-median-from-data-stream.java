@@ -3,7 +3,7 @@ class MedianFinder {
         PriorityQueue<Integer> max;
 
         public MedianFinder() {
-            min = new PriorityQueue<>((a, b) -> b - a);
+            min = new PriorityQueue<>(Collections.reverseOrder());
             max = new PriorityQueue<>();
         }
 
