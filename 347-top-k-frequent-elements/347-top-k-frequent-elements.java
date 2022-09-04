@@ -15,23 +15,27 @@ class Solution {
     }
 
     public int[] topKFrequent(int[] nums, int k) {
+        List<Integer>[] bucket = new List[nums.length + 1];
         HashMap<Integer, Integer> map = new HashMap<>();
 
         for (int num : nums) {
-            if (map.containsKey(num)) {
-                map.put(num, map.get(num) + 1);
-            } else map.put(num, 1);
-        }
-        PriorityQueue<Pair> pq = new PriorityQueue<>();
-        for (int key : map.keySet()) {
-            Pair p = new Pair(key, map.get(key));
-            pq.add(p);
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
         int[] res = new int[k];
-        int idx = 0;
-
-        while (k-- > 0) {
-            res[idx++] = pq.poll().val;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            int num = entry.getKey();
+            int times = entry.getValue();
+            if (bucket[times] == null) {
+                bucket[times] = new ArrayList<>();
+            }
+            bucket[times].add(num);
+        }
+        for (int i = nums.length; i > 0; i--) {
+            if (bucket[i] != null) {
+                for (int a : bucket[i])
+                    res[--k] = a;
+            }
+            if (k == 0) break;
         }
 
         return res;
