@@ -7,7 +7,7 @@ class Solution {
             new Comparator<String>() {
 
                 @Override
-                public int compare(final String s1, final String s2) {
+                public int compare( String s1, final String s2) {
                     return s1.length() < s2.length() ? -1 : 1;
                 }
             }
@@ -26,5 +26,7 @@ class Solution {
         }
 
         return sb.toString();
+        
+        // you can also sort by lexographical order
     }
 }
