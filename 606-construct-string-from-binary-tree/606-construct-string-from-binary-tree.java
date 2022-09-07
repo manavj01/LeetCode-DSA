@@ -15,37 +15,27 @@
  */
 class Solution {
     public String tree2str(TreeNode root) {
-         if (root == null) return "";
-
-        StringBuilder result = new StringBuilder(root.val + "");
-
-        StringBuilder left = new StringBuilder(tree2str(root.left));
-        StringBuilder right = new StringBuilder(tree2str(root.right));
-
-        if (left.toString().equals("") && right.toString().equals("")) {
-            return result.toString();
+       StringBuilder builder = new StringBuilder();
+        visit(root, builder);
+        return builder.toString();
+    }
+    void visit(TreeNode node, StringBuilder str) {
+        str.append(node.val);
+        
+        if (node.left == null && node.right == null) return;
+        
+        if (node.left != null) {
+            str.append("(");
+            visit(node.left, str);
+            str.append(")");
+        } else {
+            str.append("()");
         }
-        if (left.toString().equals("")) {
-            return result.append("()").append("(").append(right).append(")").toString();
+        
+        if (node.right != null) {
+            str.append("(");
+            visit(node.right, str);
+            str.append(")");
         }
-        if (right.toString().equals("")) {
-            return result.append("(").append(left).append(")").toString();
-        }
-        return result.append("(").append(left).append(")").append("(").append(right).append(")").toString();
-        
-//         if (t == null) return "";
-        
-//         String result = t.val + "";
-        
-//         String left = tree2str(t.left);
-//         String right = tree2str(t.right);
-        
-//         if (left == "" && right == "")
-//             return result;
-//         if (left == "")
-//             return result + "()" + "(" + right + ")";
-//         if (right == "") 
-//             return result + "(" + left + ")";
-//         return result + "(" + left + ")" + "(" + right + ")";
     }
 }
