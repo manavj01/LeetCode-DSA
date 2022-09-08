@@ -21,9 +21,13 @@ class Solution {
         sb = new StringBuilder();
         int size = stack.size();
         for(int i=0; i<size; i++){
+            if(i== size-1){
+            sb.append(stack.pop());
+                break;
+            }
             sb.append(stack.pop()).append(" ");
         }
-      s = sb.toString();
-        return s.trim();
+      // s = sb.toString();
+        return sb.toString();
     }
 }
