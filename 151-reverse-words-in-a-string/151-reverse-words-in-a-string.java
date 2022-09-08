@@ -1,33 +1,28 @@
 class Solution {
-    public String reverseWords(String s) {
-       
-        // Stack<String> stack = new Stack<>();
-        // StringBuilder sb = new StringBuilder();
-        // s = s.trim();
-        // for(int i =0; i<s.length(); i++){
-        //     char ch = s.charAt(i);
-        //     if(s.charAt(i) == ' ' && s.charAt(i-1) == ' ') continue;
-        //     if(ch == ' '){
-        //         stack.push(sb.toString());
-        //         // stack.push(" ");
-        //         sb = new StringBuilder();
-        //     }else{
-        //          sb.append(ch);
-        //     }
-        // }
-        // stack.push(sb.toString());
-        // sb = new StringBuilder();
-        // int size = stack.size();
-        // for(int i=0; i<size; i++){
-        //     if(i== size-1){
-        //     sb.append(stack.pop());
-        //         break;
-        //     }
-        //     sb.append(stack.pop()).append(" ");
-        // }
-        // return sb.toString();
-    String[] words = s.trim().split(" +");
-    Collections.reverse(Arrays.asList(words));
-    return String.join(" ", words);
+   public String reverseWords(String a) {
+    char[] s = a.toCharArray();
+    int length = 0;
+    for (int j = 0; j < s.length; j++) {
+        if (s[j] != ' ' || (length > 0 && s[length - 1] != ' '))
+            s[length++] = s[j];
     }
+    if (length > 0 && s[length - 1] == ' ') length--;
+    s = Arrays.copyOf(s, length);
+    reverse(s, 0, s.length - 1);
+    for (int i = 0, j = 0; j <= s.length; j++) {
+        if (j == s.length || s[j] == ' ') {
+            reverse(s, i, j - 1);
+            i = j + 1;
+        }
+    }
+    return new String(s);
+}
+
+private void reverse(char[] s, int i, int j) {
+    while (i < j) {
+        char tmp = s[i];
+        s[i++] = s[j];
+        s[j--] = tmp;
+    }
+}
 }
