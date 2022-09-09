@@ -1,54 +1,22 @@
+// Time complexity: O(NlogN) - The time for sorting O(NLongN) + time for iterating over the list O(logN)
+// Space complexity: O(logN) - the space it takes for sorting
 class Solution {
-    class Pair{
-        int power;
-        int defense;
-        Pair(int power, int defense){
-            this.power = power;
-            this.defense = defense;
-        }
-    }
-//     public int numberOfWeakCharacters(int[][] prop) {
-//         Arrays.sort(prop,(a, b) -> a[0] - b[0] );
-//         // for(int[] z : prop){
-//         //     System.out.println(Arrays.toString(z));
-//         // }
-//         int c =0;
-//         Stack<Pair> st = new Stack<>();
+    public int numberOfWeakCharacters(int[][] properties) {
+        // Sort in ascending order of attack, 
+        // If attack is same sort in descending order of defense
+        Arrays.sort(properties, (a, b) -> (a[0] == b[0]) ? (b[1] - a[1]) : a[0] - b[0]);
         
-//         for(int[] pair : prop){
-            
-//             if(!st.isEmpty() && pair[0] > st.peek().power && pair[1] > st.peek().defense){
-//                 c++;
-//             }
-//             if(!st.isEmpty() && (pair[0] <= st.peek().power || pair[1] <= st.peek().defense)){
-//                 while(!st.isEmpty() && (pair[0] <= st.peek().power || pair[1] <= st.peek().defense)){
-//                     st.pop();
-//                 }
-//                 if(!st.isEmpty()){
-//                     c++;
-//                 }
-//             }
-            
-//             st.push(new Pair(pair[0],pair[1]));
-//         }
-        
-        
-//         return c;
-//     }
-      public int numberOfWeakCharacters(int[][] properties) {
-         int n = properties.length;
-        int count = 0;
-        
-        Arrays.sort(properties, (a, b) -> (b[0] == a[0]) ? (a[1] - b[1]) : b[0] - a[0]);
-        
-        int max = 0;
-        for (int i = 0; i < n; i++) {
-            
-            if (properties[i][1] < max) {
-                count++;
+        int weakCharacters = 0;
+        int maxDefense = 0;
+        for (int i = properties.length - 1; i >= 0; i--) {
+            // Compare the current defense with the maximum achieved so far
+            if (properties[i][1] < maxDefense) {
+                weakCharacters++;
+            } else if (properties[i][1] > maxDefense) {
+                maxDefense = properties[i][1];
             }
-            max = Math.max(max, properties[i][1]);
         }
-        return count;
-        }
+        
+        return weakCharacters;
+    }
 }
