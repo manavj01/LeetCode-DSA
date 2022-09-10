@@ -3,7 +3,7 @@ class Solution {
     public String longestCommonPrefix(String[] strs) {
         StringBuilder sb = new StringBuilder();
 //        Arrays.sort(strs, Comparator.comparingInt(String::length));
-        System.out.println(Arrays.toString(strs));
+        // System.out.println(Arrays.toString(strs));
         int minLen = Integer.MAX_VALUE;
         int minIdx = -1;
         for (int i = 0; i < strs.length; i++) {
