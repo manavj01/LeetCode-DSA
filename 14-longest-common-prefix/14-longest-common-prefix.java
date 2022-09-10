@@ -2,31 +2,39 @@ class Solution {
 
     public String longestCommonPrefix(String[] strs) {
         StringBuilder sb = new StringBuilder();
-        Arrays.sort(
-            strs,
-            new Comparator<String>() {
-
-                @Override
-                public int compare(String s1, String s2) {
-                    return s1.length() < s2.length() ? -1 : 1;
-                }
+//        Arrays.sort(strs, Comparator.comparingInt(String::length));
+        System.out.println(Arrays.toString(strs));
+        int minLen = Integer.MAX_VALUE;
+        int minIdx = -1;
+        for (int i = 0; i < strs.length; i++) {
+            if (strs[i].length() < minLen) {
+                minLen = strs[i].length();
+                minIdx = i;
             }
-        );
-        for (int i = 0; i < strs[0].length(); i++) {
-            char ch = strs[0].charAt(i);
-            for (int j = 1; j < strs.length; j++) {
+        }
+        for (int i = 0; i < strs[minIdx].length(); i++) {
+            char ch = strs[minIdx].charAt(i);
+            for (int j = 0; j < strs.length; j++) {
                 if (ch != strs[j].charAt(i)) {
                     return sb.toString();
-
-                //     continue;
-                // } else {
-                //     // break;
                 }
             }
             sb.append(ch);
         }
+                return sb.toString();
 
-        return sb.toString();
-        // you can also sort by lexographical order
     }
+    // public String longestCommonPrefix(String[] strs) {
+    //     if(strs.length ==0) return "";
+    //     String prefix = strs[0];
+    //     for
+    //     (int i=0; i<strs.length; i++)
+    //     {
+    //         while(strs[i].indexOf(prefix) != 0)
+    //         {
+    //             prefix= prefix.substring(0, prefix.length()-1);
+    //         }
+    //     }
+    //     return prefix;
+    // }
 }
