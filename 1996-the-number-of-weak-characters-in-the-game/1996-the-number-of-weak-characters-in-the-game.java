@@ -12,7 +12,7 @@ class Solution {
             // Compare the current defense with the maximum achieved so far
             if (properties[i][1] < maxDefense) {
                 weakCharacters++;
-            } else if (properties[i][1] > maxDefense) {
+            } else  {
                 maxDefense = properties[i][1];
             }
         }
