@@ -1,6 +1,6 @@
 class Solution {
 
-//     public String longestCommonPrefix(String[] strs) {
+    public String longestCommonPrefix(String[] strs) {
 //         StringBuilder sb = new StringBuilder();
 
 //         int minLen = Integer.MAX_VALUE;
@@ -23,17 +23,13 @@ class Solution {
 //                 return sb.toString();
 
 //     }
-    public String longestCommonPrefix(String[] strs) {
-        if(strs.length ==0) return "";
-        String prefix = strs[0];
-        for
-        (int i=0; i<strs.length; i++)
-        {
-            while(strs[i].indexOf(prefix) != 0)
-            {
-                prefix= prefix.substring(0, prefix.length()-1);
+   if (strs.length == 0) return "";
+        StringBuilder prefix = new StringBuilder(strs[0]);
+        for (String str : strs) {
+            while (str.indexOf(String.valueOf(prefix)) != 0) {
+                prefix = new StringBuilder(prefix.substring(0, prefix.length() - 1));
             }
         }
-        return prefix;
+        return prefix.toString();
     }
 }
