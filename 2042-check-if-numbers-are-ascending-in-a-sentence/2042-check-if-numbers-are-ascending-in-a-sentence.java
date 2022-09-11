@@ -4,7 +4,6 @@ class Solution {
         String numberOnly = s.replaceAll("\\D+", " ");
         
         String[] arr =numberOnly.split(" ");
-                System.out.println(Arrays.toString(arr));
 
         for(int i=1; i<arr.length; i++){
            if( arr[i-1] == "") continue;
@@ -15,7 +14,6 @@ class Solution {
                 return false;
             }
         }
-        System.out.println(Arrays.toString(arr));
         return true;
     }
 }
