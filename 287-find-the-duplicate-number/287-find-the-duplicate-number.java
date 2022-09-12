@@ -1,17 +1,18 @@
 class Solution {
     public int findDuplicate(int[] arr) {
-        int[] freq =  new int[arr.length];
-        for (int i=0; i< arr.length; i++){
-            if(freq[arr[i]] >0) return arr[i];
-            freq[arr[i]]++;
+        boolean[] flag=new boolean[arr.length+1];
+    for(int a:arr){
+        if(flag[a]==true){
+            return a;
         }
-        
+        flag[a]=true;
+    }
+    return -1;
         // int i;
         // for ( i=0; i < freq.length;i++){
         //     if (freq[i]>1){
         //         break;
         //     }
         // }
-        return -1;
     }
 }
