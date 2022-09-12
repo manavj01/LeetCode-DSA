@@ -17,20 +17,21 @@ class Solution {
     //         return true;
     //     }
     public boolean areNumbersAscending(String s) {
-        int prev = 0, cur = 0;
+        int prev = 0;
+        int curr = 0;
         
-        for (int i = 0; i < s.length(); ++i) {
-            
+        for(int i=0; i<s.length(); i++){
             char ch = s.charAt(i);
-        
-            if (s.charAt(i) >= 48 && s.charAt(i) <= 57) {
-                cur = cur * 10 + (ch - '0');
-            } else if (cur != 0) {
-                if (prev >= cur) return false;
-                prev = cur;
-                cur = 0;
+            if(ch >= 48 && ch<= 57){
+                curr = curr*10 + ch;
+            }else if(curr != 0){
+                if(curr <= prev) return false;
+                
+                prev = curr;
+                curr =0;
             }
         }
-        return cur == 0|| prev <cur;
+        
+        return curr == 0 || prev < curr;
     }
 }
