@@ -1,39 +1,35 @@
 class Solution {
 
-    public static int myAtoi(String str) {
-//         str = str.trim();
+    public static int myAtoi(String s) {
 
-        if (str == null || str.length() == 0) return 0; 
-        int sign = 1, start = 0, len = str.length();
+        int len = s.length();
+        int start = 0;
 
-        while (start < str.length() && str.charAt(start) == ' ') {
-            ++start;
-        }
-        if(start== len) return 0;
-        char firstChar = str.charAt(start);
-        
-        
-        long sum = 0;
-        
-        if (firstChar == '+') {
-            sign = 1;
-            start++;
-        } else if (firstChar == '-') {
+        while (start < len && s.charAt(start) == ' ') start++;
+
+        if (s == null || len == 0 || start == len) return 0;
+        long num = 0;
+        int sign = 1;
+        if (s.charAt(start) == '-'){
             sign = -1;
             start++;
-        }
-        
-        for (int i = start; i < len; i++) {
-            if (!Character.isDigit(str.charAt(i))){
-              return (int) sum * sign;  
-            } 
-            sum = sum * 10 + str.charAt(i) - '0';
-            
-            if (sign == 1 && sum > Integer.MAX_VALUE) return Integer.MAX_VALUE;
-            
-            if (sign == -1 && (-1) * sum < Integer.MIN_VALUE) return Integer.MIN_VALUE;
+        }else if (s.charAt(start) == '+') {
+            start++;
         }
 
-        return (int) sum * sign;
+        for (int i = start; i < len; i++) {
+            char ch = s.charAt(i);
+            if (ch < 48 || ch > 57) {
+                num = num * sign;
+                return (int) num;
+            }
+            num = num * 10 + ch - '0';
+
+            if(sign == -1 && sign*num <Integer.MIN_VALUE) return Integer.MIN_VALUE;
+                       if (sign == 1&& num > Integer.MAX_VALUE) return Integer.MAX_VALUE;
+
+        }
+
+        return (int) num*sign;
     }
 }
