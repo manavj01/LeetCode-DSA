@@ -18,8 +18,11 @@ class Solution {
     //     }
     public boolean areNumbersAscending(String s) {
         int prev = 0, cur = 0;
+        
         for (int i = 0; i < s.length(); ++i) {
+            
             char ch = s.charAt(i);
+        
             if (s.charAt(i) >= 48 && s.charAt(i) <= 57) {
                 cur = cur * 10 + (ch - '0');
             } else if (cur != 0) {
@@ -28,6 +31,6 @@ class Solution {
                 cur = 0;
             }
         }
-        return cur == 0 || prev < cur;
+        return cur == 0|| prev <cur;
     }
 }
