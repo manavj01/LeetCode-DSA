@@ -21,6 +21,7 @@ class Solution {
                 }
                 if (dp[i][j]) {
                     if (maxlen < s.substring(i, j + 1).length()) {
+                        maxlen =  s.substring(i, j + 1).length();
                     r =i;
                     c = j;
                     }
