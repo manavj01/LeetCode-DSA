@@ -41,29 +41,17 @@ class Solution {
 
 //         return code;
 //     }
-    public List<List<String>> groupAnagrams(String[] strs) {
-        HashMap<HashMap<Character, Integer>, ArrayList<String>> mapOfMaps = new HashMap<>();
-        for(String str : strs){
-            HashMap<Character, Integer> fmap = new HashMap<>();
-            for(int i = 0 ; i < str.length(); i++){
-                char c = str.charAt(i);
-                fmap.merge(c, 1 , Integer::sum);                
-            }
-            
-            if(mapOfMaps.containsKey(fmap) == false){
-               ArrayList<String> list = new ArrayList<>();
-               list.add(str);
-               mapOfMaps.put(fmap, list);
-            }else{
-               ArrayList<String> list = mapOfMaps.get(fmap);
-                list.add(str);
-            }
-            
-        }
-        ArrayList<List<String>> ans  = new ArrayList<>();
-        for(ArrayList<String> list : mapOfMaps.values()){
-            ans.add(list);
-        }
-        return ans;
-    } 
+  public List<List<String>> groupAnagrams(String[] strs) {
+	Map<String, List<String>> map = new HashMap<>();
+	for(String str : strs) {
+		char[] chars = str.toCharArray();
+		Arrays.sort(chars);
+
+		String sortedStr = new String(chars);
+		map.putIfAbsent(sortedStr, new ArrayList<>());
+		map.get(sortedStr).add(str);
+	}
+
+	return new ArrayList<>(map.values());
+}
 }
