@@ -16,29 +16,26 @@
 class Solution {
 public  class vPair {
         TreeNode node;
-        int hl;
         int vl;
+        int hl;
 
         vPair(TreeNode node, int hl, int vl) {
             this.node = node;
-            this.hl = hl;
-            this.vl = vl;
+            this.vl = hl;
+            this.hl = vl;
         }
 
     }
 
 
     public  List<List<Integer>> verticalTraversal(TreeNode root) {
-          Queue<vPair> que = new PriorityQueue<>(new Comparator<vPair>() {
-            @Override
-            public int compare(vPair o1, vPair o2) {
-                if (o1.vl < o2.vl){
-                    return -1;
-                }else if (o1.vl > o2.vl){
-                    return 1;
-                } else  {
-                    return Integer.compare(o1.node.val , o2.node.val);
-                }
+        Queue<vPair> que = new PriorityQueue<>((o1, o2) -> {
+            if (o1.hl < o2.hl){
+                return -1;
+            }else if (o1.hl > o2.hl){
+                return 1;
+            } else  {
+                return Integer.compare(o1.node.val , o2.node.val);
             }
         });
 
@@ -55,17 +52,17 @@ public  class vPair {
             while (size-- > 0) {
                 vPair rp = que.poll();
 
-                maxhl = Math.max(maxhl, rp.hl);
-                minhl = Math.min(minhl, rp.hl);
+                maxhl = Math.max(maxhl, rp.vl);
+                minhl = Math.min(minhl, rp.vl);
 
-                map.putIfAbsent(rp.hl, new ArrayList<>());
-                map.get(rp.hl).add(rp.node.val);
+                map.putIfAbsent(rp.vl, new ArrayList<>());
+                map.get(rp.vl).add(rp.node.val);
 
                 if (rp.node.left != null) {
-                    que.add(new vPair(rp.node.left, rp.hl - 1, rp.vl+1));
+                    que.add(new vPair(rp.node.left, rp.vl - 1, rp.hl +1));
                 }
                 if (rp.node.right != null) {
-                    que.add(new vPair(rp.node.right, rp.hl + 1,rp.vl+1));
+                    que.add(new vPair(rp.node.right, rp.vl + 1,rp.hl +1));
                 }
             }
         }
