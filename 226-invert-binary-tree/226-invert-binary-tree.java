@@ -31,12 +31,12 @@ class Solution {
             return null;
         }
 
-        final Queue<TreeNode> queue = new LinkedList<>();
+         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
 
         while(!queue.isEmpty()) {
-            final TreeNode node = queue.poll();
-            final TreeNode left = node.left;
+             TreeNode node = queue.poll();
+             TreeNode left = node.left;
             node.left = node.right;
             node.right = left;
 
