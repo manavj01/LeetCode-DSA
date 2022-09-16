@@ -32,8 +32,8 @@ class Solution {
         while (!que.isEmpty()) {
             int size = que.size();
             int lm = que.getFirst().idx;
-            int rm = que.getFirst().idx;
-
+            // int rm = que.getFirst().idx;
+                int rm =0;
             while (size-- > 0) {
                 pair rp = que.removeFirst();
                 rm = rp.idx;
