@@ -21,55 +21,63 @@ public  class vPair {
 
         vPair(TreeNode node, int hl, int vl) {
             this.node = node;
-            this.vl = hl;
-            this.hl = vl;
+            this.vl = vl;
+            this.hl = hl;
         }
 
+    }
+     public  void width(TreeNode root, int hl, int[] width) {
+        if (root == null) {
+            return;
+        }
+
+        width[0] = Math.min(width[0], hl);
+        width[1] = Math.max(width[1], hl);
+
+        width(root.left, hl - 1, width);
+        width(root.right, hl + 1, width);
     }
 
 
     public  List<List<Integer>> verticalTraversal(TreeNode root) {
-        Queue<vPair> que = new PriorityQueue<>((o1, o2) -> {
-            if (o1.hl < o2.hl){
-                return -1;
-            }else if (o1.hl > o2.hl){
-                return 1;
-            } else  {
-                return Integer.compare(o1.node.val , o2.node.val);
-            }
-        });
+        List<List<Integer>> res = new ArrayList<>();
+        LinkedList<vPair> que = new LinkedList<>();
 
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        int minhl = 0, maxhl = 0;
+        int[] minMax = new int[2];
+        width(root, 0, minMax);
+        int len = minMax[1] - minMax[0] + 1;
 
-        List<List<Integer>> ans = new ArrayList<>();
-
-        que.add(new vPair(root, 0,0));
-
-        while (que.size() != 0) {
+        for (int i = 0; i < len; i++) res.add(new ArrayList<>());
+        vPair rtp = new vPair(root, Math.abs(minMax[0]), 0);
+        que.addLast(rtp);
+        while (!que.isEmpty()) {
             int size = que.size();
-
-            while (size-- > 0) {
-                vPair rp = que.poll();
-
-                maxhl = Math.max(maxhl, rp.vl);
-                minhl = Math.min(minhl, rp.vl);
-
-                map.putIfAbsent(rp.vl, new ArrayList<>());
-                map.get(rp.vl).add(rp.node.val);
-
-                if (rp.node.left != null) {
-                    que.add(new vPair(rp.node.left, rp.vl - 1, rp.hl +1));
+            que.sort((o1, o2) -> {
+                if (o1.hl < o2.hl) {
+                    return 1;
+                } else if (o1.hl > o2.hl) {
+                    return -1;
+                } else {
+                    return Integer.compare(o1.node.val, o2.node.val);
                 }
-                if (rp.node.right != null) {
-                    que.add(new vPair(rp.node.right, rp.vl + 1,rp.hl +1));
+            });
+            while (size-- > 0) {
+                vPair rp = que.removeFirst();
+
+                int hl = rp.hl;
+                TreeNode node = rp.node;
+
+                res.get(hl).add(node.val);
+                if (node.left != null){
+                    que.addLast(new vPair(node.left,rp.hl-1,rp.vl+1));
+                }
+                if (node.right != null){
+                    que.addLast(new vPair(node.right,rp.hl+1,rp.vl+1));
+
                 }
             }
         }
-        for (int i = minhl; i <= maxhl; i++) {
-            // Collections.sort(map.get(i));
-            ans.add(map.get(i));
-        }
-        return ans;
+
+        return res;
     }
 }
