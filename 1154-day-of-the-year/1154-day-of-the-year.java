@@ -4,8 +4,8 @@ class Solution {
         String[] str = date.split("-");
         int year = Integer.parseInt(str[0]);
         int month = Integer.parseInt(str[1]);
-        int day = Integer.parseInt(str[2]);
-        int d = 0;
+        int d = Integer.parseInt(str[2]);
+        // int d = 0;
         if(((year % 4 == 0) && (year % 100!= 0)) || (year%400 == 0)){
            if(month >2 )  d++;
         }
@@ -14,7 +14,7 @@ class Solution {
             d += months[i];
         }
         
-        return d+=day;
+        return d;
         
     }
 }
