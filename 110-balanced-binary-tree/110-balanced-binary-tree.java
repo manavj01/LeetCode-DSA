@@ -21,18 +21,17 @@ class Solution {
     }
     
     public int isBalancedHelper(TreeNode node){
-        if (node == null) return 0;
-
-        int lh = isBalancedHelper(node.left);
-        int rh = isBalancedHelper(node.right);
-
-        int gap = Math.abs(lh - rh);
-        if (gap > 1) {
+        if(node == null) return 0;
+        
+        int left = isBalancedHelper(node.left);
+        int right = isBalancedHelper(node.right);
+        
+        int gap = Math.abs(left-right);
+        
+        if(gap > 1){
             isBal = false;
         }
-
-        int th = Math.max(lh,rh) +1;
-
-        return th;
+        
+        return Math.max(left,right)+1;
     }
 }
