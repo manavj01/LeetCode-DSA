@@ -17,20 +17,20 @@ class Solution {
 
         // TreeNode prev = null;
         public void flatten(TreeNode root) {
-               TreeNode[] arr = new TreeNode[1];
+             TreeNode[] arr = new TreeNode[1];
             arr[0] = null;
             solve(root,arr);
         }
-    public void solve(TreeNode root ,TreeNode[] arr){
+    public void solve(TreeNode root ,TreeNode[] prev){
          if(root == null) return ;
 
-            solve(root.right,arr);
-            solve(root.left,arr);
+            solve(root.right,prev);
+            solve(root.left,prev);
 
             root.left = null;
-            root.right = arr[0];
+            root.right = prev[0];
 
-            arr[0] = root;
+            prev[0] = root;
 
     }
 //     public void flatten(TreeNode root) {
