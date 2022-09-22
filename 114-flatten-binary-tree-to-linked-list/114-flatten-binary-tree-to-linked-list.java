@@ -14,15 +14,13 @@
  * }
  */
 class Solution {
+        TreeNode prev = null;
+
     public void flatten(TreeNode root) {
-       solve(root);
-    }
-    TreeNode prev = null;
-    public void solve(TreeNode root){
-        if(root == null) return ;
+            if(root == null) return ;
         
-        solve(root.right);
-        solve(root.left);
+        flatten(root.right);
+        flatten(root.left);
         
         root.left = null;
         root.right = prev;
@@ -30,4 +28,5 @@ class Solution {
         prev = root;
        
     }
+    
 }
