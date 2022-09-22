@@ -14,11 +14,9 @@
  * }
  */
 class Solution {
-    class DiaPair{
-        int ht;
-        int dia;
-    }
+    
     int res =0;
+   
     public int diameterOfBinaryTree(TreeNode node) {
         solve(node);
         return res;
