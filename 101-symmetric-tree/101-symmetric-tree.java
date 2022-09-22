@@ -17,7 +17,7 @@ class Solution {
     public boolean isSymmetric(TreeNode root) {
         if(root == null)
             return true;
-        Stack<TreeNode> q = new Stack();
+        Stack<TreeNode> q = new Stack();// can also be done by queues
        
         q.push(root.left);
         q.push(root.right);
