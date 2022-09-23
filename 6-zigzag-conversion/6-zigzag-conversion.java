@@ -8,33 +8,15 @@ class Solution {
         }
         boolean flag = true;
         int k = 1;
-        int i = 0;
-        while (true) {
-            while (i < s.length() && flag) {
-                char ch = s.charAt(i);
-                i++;
-                arr[k] = arr[k].append(ch);
-                k++;
-                if (k > numRows) {
-                    k -= 2;
-                    flag = false;
-                }
-            }
-
-            while (i < s.length() && !flag) {
-                char ch = s.charAt(i);
-                i++;
-                arr[k] = arr[k].append(ch);
-                k--;
-
-                if (k < 1) {
-                    k += 2;
-                    flag = true;
-                }
-            }
-            if(i == s.length()) break;
-            
+        int cursor = 1; 
+      
+        for(int i =0 ; i<s.length(); i++){
+            arr[k].append(s.charAt(i));
+            if(k == numRows) cursor =-1;
+            if(k == 1) cursor =1;
+            k += cursor;
         }
+        
         StringBuilder ans = new StringBuilder();
         for(StringBuilder sb : arr){
             ans.append(sb);
