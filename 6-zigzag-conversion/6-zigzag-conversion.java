@@ -3,7 +3,6 @@ class Solution {
     public String convert(String s, int numRows) {
         StringBuilder[] arr = new StringBuilder[numRows + 1];
         if(numRows == 1 ) return s;
-        
         for (int i = 0; i < arr.length; i++) {
             arr[i] = new StringBuilder();
         }
@@ -17,9 +16,10 @@ class Solution {
             k += cursor;
         }
         
-        for(int i=1; i<arr.length; i++){
-            arr[0].append(arr[i]);
+        StringBuilder ans = new StringBuilder();
+        for(StringBuilder sb : arr){
+            ans.append(sb);
         }
-        return arr[0].toString();
+        return ans.toString();
     }
 }
