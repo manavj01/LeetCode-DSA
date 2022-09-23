@@ -3,10 +3,10 @@ class Solution {
     public String convert(String s, int numRows) {
         StringBuilder[] arr = new StringBuilder[numRows + 1];
         if(numRows == 1 ) return s;
+        
         for (int i = 0; i < arr.length; i++) {
             arr[i] = new StringBuilder();
         }
-        boolean flag = true;
         int k = 1;
         int cursor = 1; 
       
