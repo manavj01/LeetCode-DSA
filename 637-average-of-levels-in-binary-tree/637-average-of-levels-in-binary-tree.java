@@ -32,7 +32,7 @@ class Solution {
                 
                 ans += q.poll().val;
             }
-            res.add(ans/size);
+            res.add((double)ans/size);
         }
         
         
