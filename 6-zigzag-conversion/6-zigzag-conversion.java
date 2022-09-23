@@ -17,10 +17,9 @@ class Solution {
             k += cursor;
         }
         
-        StringBuilder ans = new StringBuilder();
-        for(StringBuilder sb : arr){
-            ans.append(sb);
+        for(int i=1; i<arr.length; i++){
+            arr[0].append(arr[i]);
         }
-        return ans.toString();
+        return arr[0].toString();
     }
 }
