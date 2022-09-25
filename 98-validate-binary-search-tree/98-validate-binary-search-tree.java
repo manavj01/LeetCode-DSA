@@ -15,34 +15,33 @@
  */
 class Solution {
 
-    public class Pair {
-        long x = Long.MIN_VALUE;
-        long y = Long.MAX_VALUE;
+//     public class Pair {
+//         long x = Long.MIN_VALUE;
+//         long y = Long.MAX_VALUE;
 
-        Pair(long x, long y) {
-            this.x = x;
-            this.y = y;
-        }
+//         Pair(long x, long y) {
+//             this.x = x;
+//             this.y = y;
+//         }
 
-        Pair() {}
-    }
+//         Pair() {}
+//     }
 
     public boolean isValidBST(TreeNode root) {
-        Pair rtp = new Pair();
-        return solve(root, rtp);
+        // Pair rtp = new Pair();
+        return solve(root, Long.MIN_VALUE,Long.MAX_VALUE);
     }
 
-    public boolean solve(TreeNode root, Pair rtp) {
-        if(root == null) return true;
-        
-        if(root.val <= rtp.x || root.val >= rtp.y ){
+    public boolean solve(TreeNode root,long min, long max) {
+        if (root == null) return true;
+
+        if (root.val <= min || root.val >= max) {
             return false;
         }
-        
-        boolean left = solve(root.left,new Pair(rtp.x,root.val));
-        boolean right = solve(root.right,new Pair(root.val,rtp.y));
+
+        boolean left = solve(root.left, min, root.val);
+        boolean right = solve(root.right,root.val, max);
 
         return left && right;
-        
     }
 }
