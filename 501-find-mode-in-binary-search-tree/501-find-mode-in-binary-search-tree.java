@@ -20,13 +20,11 @@ class Solution {
         ArrayList<Integer> arr = new ArrayList<>();
         solve(root,map);
         
-        int maxKey=0;
         int maxVal = 0;
         
         for(int key : map.keySet()){
             if(map.get(key) > maxVal){
                 maxVal = map.get(key);
-                maxKey = key;
             }
         }
         
