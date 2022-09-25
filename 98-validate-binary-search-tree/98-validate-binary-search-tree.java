@@ -14,19 +14,35 @@
  * }
  */
 class Solution {
-    public boolean isValidBST(TreeNode root) {
-         Stack<TreeNode> st = new Stack<>();
-        TreeNode pre = null;
-        while (root != null || !st.isEmpty()){
-            while (root != null){
-                st.push(root);
-                root = root.left;
-            }
-            root = st.pop();
-            if(pre != null && pre.val >= root.val) return false;
-            pre = root;
-            root = root.right;
+
+    public class Pair {
+        long x = Long.MIN_VALUE;
+        long y = Long.MAX_VALUE;
+
+        Pair(long x, long y) {
+            this.x = x;
+            this.y = y;
         }
-        return true;
+
+        Pair() {}
+    }
+
+    public boolean isValidBST(TreeNode root) {
+        Pair rtp = new Pair();
+        return solve(root, rtp);
+    }
+
+    public boolean solve(TreeNode root, Pair rtp) {
+        if(root == null) return true;
+        
+        if(root.val <= rtp.x || root.val >= rtp.y ){
+            return false;
+        }
+        
+        boolean left = solve(root.left,new Pair(rtp.x,root.val));
+        boolean right = solve(root.right,new Pair(root.val,rtp.y));
+
+        return left && right;
+        
     }
 }
