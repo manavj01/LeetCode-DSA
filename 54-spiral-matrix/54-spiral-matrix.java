@@ -11,29 +11,30 @@ class Solution {
         int cMin = 0;
         int rMax = n - 1;
         int cMax = m - 1;
-        while (c < tot) {
+        
+        while (res.size() < (m * n)) {
             if (cMin > cMax) break;
             for (int j = cMin; j <= cMax; j++) {
                 res.add(matrix[rMin][j]);
-                c++;
+                // c++;
             }
             rMin++;
             if (rMin > rMax) break;
             for (int i = rMin; i <= rMax; i++) {
                 res.add(matrix[i][cMax]);
-                c++;
+                // c++;
             }
             cMax--;
             if (cMin > cMax) break;
             for (int j = cMax; j >= cMin; j--) {
                 res.add(matrix[rMax][j]);
-                c++;
+                // c++;
             }
             rMax--;
             if (rMin > rMax) break;
             for (int i = rMax; i >= rMin; i--) {
                 res.add(matrix[i][cMin]);
-                c++;
+                // c++;
             }
 
             cMin++;
