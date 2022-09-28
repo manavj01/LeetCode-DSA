@@ -15,15 +15,31 @@
  */
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
-        ArrayList<Integer> arr = new ArrayList<>();
-        solve(root,arr, k); 
-        return arr.get(k-1);
+        // dfs
+        // ArrayList<Integer> arr = new ArrayList<>();
+        // dfs(root,arr, k); 
+        // return arr.get(k-1);
+        
+        //bfs
+        
+        LinkedList<TreeNode> que = new LinkedList<>();
+        
+            while(true){
+                while(root != null){
+                    que.addLast(root);
+                    root = root.left;
+                }
+                root = que.removeLast();
+                if(--k == 0) return root.val;
+                root = root.right;
+            }
+        
     }
-    public void solve(TreeNode root,  ArrayList<Integer> arr,int k ){
+    public void dfs(TreeNode root,  ArrayList<Integer> arr,int k ){
         if(root == null) return;
         if(arr.size() > k) return;
-        solve(root.left,arr,k);
+        dfs(root.left,arr,k);
         arr.add(root.val);
-        solve(root.right,arr,k);
+        dfs(root.right,arr,k);
     }
 }
