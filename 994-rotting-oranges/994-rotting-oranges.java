@@ -20,9 +20,7 @@ class Solution {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (grid[i][j] == 2 ) {
-                    // System.out.println("i" +i);
-                    //                     System.out.println("j" +j);
-
+   
                   que.add(new Pair(i,j));
                 }
             }
@@ -46,27 +44,22 @@ class Solution {
                 Pair p = que.removeFirst();
                 int r = p.x;
                 int c = p.y;
-                // System.out.println();
                 if (r + 1 < n && grid[r + 1][c] == 1) { // down
                     que.addLast(new Pair(r + 1, c));
-                    // System.out.println((r+1) + "down"+ c);
                     grid[r + 1][c] = 2;
                 }
                 if (c + 1 < m && grid[r][c + 1] == 1) { // right
                     que.add(new Pair(r, c + 1));
-                    // System.out.println(r + " right "+ (c+1));
                     grid[r][c + 1] = 2;
 
                 }
                 if (r - 1 >= 0 && grid[r - 1][c] == 1) { // up
                     que.add(new Pair(r - 1, c));
-                                    // System.out.println((r-1) + " up "+ c);
 
                     grid[r - 1][c] = 2;
                 }
                 if (c - 1 >= 0 && grid[r][c - 1] == 1) { // left
                     que.add(new Pair(r, c - 1));
-                    // System.out.println(r + " left "+ (c-1)); 
                     grid[r][c - 1] = 2;
                 }
             }
@@ -78,10 +71,6 @@ class Solution {
                if(grid[i][j] == 1) return -1; 
             }
         }
-        // for(int [] a : grid){
-        //    System.out.println(Arrays.toString(a) ) ;
-        // }
-        System.out.println();
         return t-1<0 ?0 :t-1;
     }
 }
