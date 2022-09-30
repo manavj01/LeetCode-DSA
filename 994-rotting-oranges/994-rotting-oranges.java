@@ -71,6 +71,6 @@ class Solution {
                if(grid[i][j] == 1) return -1; 
             }
         }
-        return t-1<0 ?0 :t-1;
+        return Math.max(t-1,0);
     }
 }
