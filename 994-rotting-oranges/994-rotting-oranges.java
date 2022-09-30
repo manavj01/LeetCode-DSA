@@ -39,7 +39,6 @@ class Solution {
        
         while (!que.isEmpty()) {
             int size = que.size();
-            System.out.println(size);
             for (int s = 0; s < size; s++) {
                 Pair p = que.removeFirst();
                 int r = p.x;
