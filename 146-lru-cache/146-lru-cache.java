@@ -1,24 +1,24 @@
 class LRUCache {
 
     public class DLL {
-        int[] v;
+        int key; //0
+        int val; //1
         DLL prev;
         DLL next;
 
-        DLL(int[] v, DLL prev, DLL next) {
-            this.v = new int[2];
+        DLL(int key, int val, DLL prev, DLL next) {
+            this.key = key;
+            this.val = val;
             this.prev = prev;
             this.next = next;
         }
-        
-        DLL(int key, int val){
-           v = new int[2];
-            v[0] = key;
-            v[1] =val;
+
+        DLL(int key, int val) {
+            this.key = key;
+            this.val = val;
         }
 
         DLL() {}
-
     }
 
     HashMap<Integer, DLL> map;
@@ -29,8 +29,8 @@ class LRUCache {
     public LRUCache(int capacity) {
         map = new HashMap<>();
         cap = capacity;
-        head = new DLL(-1,-1);
-        tail = new DLL(-1,-1);
+        head = new DLL(-1, -1);
+        tail = new DLL(-1, -1);
         head.next = tail;
         head.prev = null;
         tail.next = null;
@@ -40,7 +40,7 @@ class LRUCache {
     public int get(int key) {
         if (map.get(key) == null) return -1;
 
-        int val = map.get(key).v[1];
+        int val = map.get(key).val;
         DLL keyNode = map.get(key);
         putNodeInPlace(keyNode);
         return val;
@@ -51,7 +51,7 @@ class LRUCache {
             //DLL node = new DLL(value);
             if (map.size() == cap) {
                 // delete node before tail;
-                int k = tail.prev.v[0];
+                int k = tail.prev.key;
                 DLL nodePrev = tail.prev.prev;
                 DLL nodeNext = tail;
                 nodePrev.next = nodeNext;
@@ -60,7 +60,7 @@ class LRUCache {
             }
             // add node after head;
             DLL headNext = head.next;
-            DLL tba = new DLL(key,value);
+            DLL tba = new DLL(key, value);
             tba.next = head.next;
             headNext.prev = tba;
             tba.prev = head;
@@ -77,7 +77,7 @@ class LRUCache {
             map.remove(key);
             // add node
             DLL headNext = head.next;
-            DLL tba = new DLL(key,value);
+            DLL tba = new DLL(key, value);
             tba.next = head.next;
             headNext.prev = tba;
             tba.prev = head;
