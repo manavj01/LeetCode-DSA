@@ -1,6 +1,7 @@
 class Solution {
     int mod = 1_000_000_007;
     public int numRollsToTarget(int d, int f, int target) {
+        if(d > target || d * f < target) return 0;
         long[] dp = new long[target + 1];
         dp[0] = 1;
         for (int i = 1; i <= d; i++) {
