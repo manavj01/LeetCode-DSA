@@ -1,18 +1,20 @@
 class MyCalendar {
-
-  List<int[]> booking;
-
-    MyCalendar() {
-        booking = new ArrayList();
+    List<int[]> booking;
+        // int[] bookArr ;
+    public MyCalendar() {
+        booking = new ArrayList<>();
+        // bookArr = new int[(int)1e4];
     }
-
+    
     public boolean book(int start, int end) {
-        for (int[] temp: booking) {
-            if (temp[0] < end && start < temp[1]) {
-                return false;
-            }
+        
+        for(int[] it : booking ){
+           if(it[0] < end && start <it[1]){
+               return false;
+           }
         }
-        booking.add(new int[]{start, end});
+       booking.add(new int[]{start,end});
+        
         return true;
     }
 }
