@@ -9,7 +9,9 @@ class Solution {
      
         Arrays.sort(fMap);
         if(fMap[24] ==0 ) return true;
+       
         boolean check = false;
+       
         for(int i =0; i<=25; i++){
             if(fMap[i] == 0) continue;
             fMap[i]--;
