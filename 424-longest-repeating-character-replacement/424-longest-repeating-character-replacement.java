@@ -12,7 +12,7 @@ class Solution {
             
             maxFreq = Math.max(maxFreq,freq[s.charAt(right)-'A']);
 
-            if ((right - left + 1) - maxFreq > k) {
+            while ((right - left + 1) - maxFreq > k) {
                 freq[s.charAt(left) - 'A']--;
                 left++;
             } 
