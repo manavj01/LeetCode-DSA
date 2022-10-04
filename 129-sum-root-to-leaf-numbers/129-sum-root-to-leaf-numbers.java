@@ -16,9 +16,8 @@
 class Solution {
     public int sumNumbers(TreeNode root) {
         ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
-        
         solve(arr,new ArrayList<Integer>(), root);
-        System.out.println(arr);
+
         int ans =0;
         for(ArrayList<Integer>a : arr){
             int num =0;
