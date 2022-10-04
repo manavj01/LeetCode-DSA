@@ -1,5 +1,5 @@
 class Solution {
-    public int numIslands(char[][] grid) {
+   public int numIslands(char[][] grid) {
         int n = grid.length;        
         int m = grid[0].length;
         int c =0;
