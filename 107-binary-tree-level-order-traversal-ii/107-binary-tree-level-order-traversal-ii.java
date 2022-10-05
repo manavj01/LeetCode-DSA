@@ -34,11 +34,9 @@ class Solution {
                     }
                     arr.add(parent.val);
                 }
-                res.add(new ArrayList<>(arr));
+                res.add(0,new ArrayList<>(arr));
             }
         
-       
-        Collections.reverse(res);
         return res;
     }
 }
