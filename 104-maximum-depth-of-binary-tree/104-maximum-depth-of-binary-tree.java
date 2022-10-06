@@ -14,40 +14,42 @@
  * }
  */
 class Solution {
-    // public int maxDepth(TreeNode root) {
-    //   if(root == null) return 0;
-    //     // Hypothesis
-    //     int left = maxDepth(root.left);
-    //     int right = maxDepth(root.right);
-    //     // Induction
-    //     return Math.max(left, right) + 1;
-    // }
     public int maxDepth(TreeNode root) {
-        if(root == null) return 0;
-        ArrayDeque<TreeNode> dque = new ArrayDeque<>();
-        dque.addLast(root);
-        int level =0;
-        while(!dque.isEmpty()){
-            int size = dque.size();
-            
-            for(int i=0; i<size; i++){
-                TreeNode parent = dque.pollFirst();
-                // if(parent.left == null && parent.right == null){
-                //     return level;
-                // }
-                if(parent.left != null){
-                    dque.addLast(parent.left);
-                }
-                if(parent.right != null){
-                    dque.addLast(parent.right);
-                }
-            }
-            level++;
-        }
-        
-        
-        return level;
+      if(root == null) return 0;
+        // Hypothesis
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        // Induction
+        return Math.max(left, right) + 1;
     }
+    
+    // bfs
+//     public int maxDepth(TreeNode root) {
+//         if(root == null) return 0;
+//         ArrayDeque<TreeNode> dque = new ArrayDeque<>();
+//         dque.addLast(root);
+//         int level =0;
+//         while(!dque.isEmpty()){
+//             int size = dque.size();
+            
+//             for(int i=0; i<size; i++){
+//                 TreeNode parent = dque.pollFirst();
+//                 // if(parent.left == null && parent.right == null){
+//                 //     return level;
+//                 // }
+//                 if(parent.left != null){
+//                     dque.addLast(parent.left);
+//                 }
+//                 if(parent.right != null){
+//                     dque.addLast(parent.right);
+//                 }
+//             }
+//             level++;
+//         }
+        
+        
+//         return level;
+//     }
 //  public int maxDepth(TreeNode root){
 //         if(root == null) return 0;
         
