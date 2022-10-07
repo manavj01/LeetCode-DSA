@@ -1,36 +1,37 @@
 class MedianFinder {
-      PriorityQueue<Integer> min;
-        PriorityQueue<Integer> max;
+   PriorityQueue<Integer> min;
+   PriorityQueue<Integer> max;
 
-        public MedianFinder() {
-            min = new PriorityQueue<>(Collections.reverseOrder());
-            max = new PriorityQueue<>();
-        }
 
-        public void addNum(int num) {
-            min.offer(num);
-            if (min.peek() != null && max.peek() != null) {
-                if (min.peek() > max.peek()) {
-                    max.offer(min.poll());
-                }
-            }
-            if (min.size() > max.size() + 1) {
-                max.offer(min.poll());
-            } else if (max.size() > min.size() + 1) {
-                min.offer(max.poll());
+    public MedianFinder() {
+        min = new PriorityQueue<>(Collections.reverseOrder());
+        max = new PriorityQueue<>();
+    }
+    
+    public void addNum(int num) {
+        min.add(num);
+        if(!max.isEmpty() && !min.isEmpty()){
+            if(min.peek() > max.peek()){
+                max.add(min.poll());
             }
         }
-
-        public double findMedian() {
-            if (min.size() > max.size()){
-                return min.peek();
-            }else if (min.size() < max.size()){
-                return max.peek();
-            }else {
-                return (min.peek() + max.peek())/2.0 ;
-            }
-
+        if(min.size() > max.size()+1){
+            max.offer(min.poll());
+        }else if(max.size() > min.size()+1){
+            min.offer(max.poll());
         }
+    }
+    
+    public double findMedian() {
+      if(min.size() > max.size()){
+          return (double)min.peek();
+      }else if(max.size() > min.size()){
+          return (double)max.peek();
+      }else{
+          return (min.peek()+max.peek())/2.0;
+      }
+        
+    }
 }
 
 /**
