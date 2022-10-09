@@ -1,11 +1,6 @@
 class Solution {
     public int maxProduct(int[] nums) {
      
-        int minPossible = nums[0];
-        int maxPossible = nums[0];
-        int maxAns = nums[0];
-        int maxProduct = nums[0];
-        
         int product=1;
         int max=Integer.MIN_VALUE;
         
@@ -26,6 +21,6 @@ class Solution {
         }
         return max;
         
-        
+        // [2,-5,-2,-4,3]
     }
 }
