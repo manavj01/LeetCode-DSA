@@ -15,38 +15,21 @@
  */
 class Solution {
     public boolean findTarget(TreeNode root, int k) {
-       
-        
-      ArrayList<Integer> list = new ArrayList<>();
-          dfs(root, list);
-        
-        int i =0;
-        int j = list.size()-1;
-        
-        while(i < j){
-            int val1 = list.get(i);
-            int val2 = list.get(j);
-            if(val1 + val2 == k) {
-                return true;
-            }else if(val1 + val2 < k) {
-                i++;
-            }else {
-                j--;
-            }
-        }
-        return false;
-       
+        return solve(root, new HashSet<Integer>(), k);
     }
-    
-         public void dfs (TreeNode root, ArrayList<Integer> list){
+     public boolean solve(TreeNode root,HashSet<Integer> set , int k){
+        if(root == null){
+            return false;
+        }
+        if(set.contains(k-root.val)){
+            return true;
+        }
+        set.add(root.val);
+       
         
-        if(root == null) return  ;
-        
-        dfs(root.left,list);   
-        list.add(root.val);
-        dfs(root.right,list);
-        
-    
+        boolean left = solve(root.left, set,k);
+        boolean right = solve(root.right, set,k);
 
+        return left || right;
     }
 }
