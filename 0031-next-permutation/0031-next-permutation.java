@@ -8,7 +8,7 @@ class Solution { // 1 4 5 3 2
         
         int  j = A.length-1;
         if(i >= 0){
-        while(j >= i && A[i] >= A[j]) j--;
+        while( A[i] >= A[j]) j--;
         swap(A, i, j);
         }
         reverse(A, i+1, A.length-1);
