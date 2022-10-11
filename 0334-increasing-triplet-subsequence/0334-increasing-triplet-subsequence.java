@@ -27,7 +27,7 @@ class Solution {
      
 //         }
 //         return false;
-        
+        if(nums.length < 3) return false;
         int first = Integer.MAX_VALUE;
         int second = Integer.MAX_VALUE;
         
