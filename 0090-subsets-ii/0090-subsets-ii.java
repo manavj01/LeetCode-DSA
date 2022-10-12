@@ -7,16 +7,18 @@ class Solution {
         return res;
     }
 
-    public static void subsets2Helper(List<List<Integer>> res, ArrayList<Integer> arr, int[] nums, int idx, boolean takePre) {
+   public static void subsets2Helper(List<List<Integer>> res, ArrayList<Integer> arr, int[] nums, int idx, boolean takePre) {
         if (idx == nums.length) {
             res.add(new ArrayList<>(arr));
             return;
         }
 
-        subsets2Helper(res, arr, nums, idx + 1, false);
-        if (idx >= 1 && nums[idx] == nums[idx - 1] && !takePre) return;
         arr.add(nums[idx]);
         subsets2Helper(res, arr, nums, idx + 1, true);
         arr.remove(arr.size() - 1);
+        if (idx >= 1 && nums[idx] == nums[idx - 1] && takePre) return;
+        subsets2Helper(res, arr, nums, idx + 1, false);
+
+
     }
 }
