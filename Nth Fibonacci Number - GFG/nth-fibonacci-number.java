@@ -24,13 +24,13 @@ class GFG {
 class Solution {
     static long nthFibonacci(long n){
         // code here
-        return solve(n , 0,1, 1);
+        return solve(n , 0,1 );
     }
-     public static long solve(long n , long a , long b, long idx){
-        if (idx == n){
+     public static long solve(long n , long a , long b){
+        if (1 == n){
             return b;
         }
-       return solve(n,b,(a+b)% 1000000007 ,idx+1) ;
+       return solve(n-1,b,(a+b)% 1000000007 ) ;
     }
     
 }
