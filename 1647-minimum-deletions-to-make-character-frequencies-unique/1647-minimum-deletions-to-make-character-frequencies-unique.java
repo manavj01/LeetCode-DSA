@@ -6,25 +6,21 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             ++freq[s.charAt(i) - 'a'];
         }
-        // Arrays.sort(freq);
-
-        System.out.println(Arrays.toString(freq));
+        
         int c = 0;
         for (int i = 25; i > 0; i--) {
+            for (int j = 25; j > 0; j--) {
+                Arrays.sort(freq);
 
+                if (freq[j] == 0 && freq[j - 1] == 0) break;
 
-            for(int j=25 ; j>0; j--){
-                            Arrays.sort(freq);
-
-            if (freq[j] == 0 && freq[j - 1] == 0) break;
-
-            if (freq[j] == freq[j - 1]) {
-                c++;
-                freq[j - 1]--;
-            }
+                if (freq[j] == freq[j - 1]) {
+                    c++;
+                    freq[j - 1]--;
+                }
             }
         }
-        System.out.println(Arrays.toString(freq));
+        
 
         return c;
     }
