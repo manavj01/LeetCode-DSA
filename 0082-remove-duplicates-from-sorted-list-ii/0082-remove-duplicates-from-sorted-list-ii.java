@@ -10,53 +10,26 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        if(head == null) return head;
-        ArrayDeque<ListNode> que = new ArrayDeque<>();
-        que.addLast(head);
-        ListNode temp = head.next;
-        while(temp != null){
-            if(temp.val == que.getLast().val ){
-                while(temp != null && temp.val ==que.getLast().val ){
-                    temp = temp.next;
-                }
-                que.removeLast();
-            }
-            if(temp != null){
-                que.addLast(temp);
-                temp = temp.next;
-            }
-        }
-       
-        // System.out.println(que.size());
+            if(head == null) return head;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode left = dummy;
+        ListNode right = head;
         
-        if(que.isEmpty()){
-          return null;  
-        } else  que.getLast().next = null;
-        head = que.removeFirst();
-        temp = head;
-        System.out.println(que.size());
-
-        while(!que.isEmpty()){
-            temp.next = que.pollFirst();
-            temp = temp.next;
-        }
-        return head;
-//         ListNode dummy = new ListNode(0);
-//         dummy.next = head;
-//         ListNode left = head;
-//         ListNode right = head.next;
-        
-//         while(right != null){
-//            if(right.val == left.val){
-//                while(right!= null && right.val == left.val){
-//                    right = right.next;
-//                }
-//            }
-//             right = right.next;
-//             left = left.next;
+        while(right != null){
+           
+            if(right.next != null && right.val == right.next.val){
+               while(right.next != null && right.val == right.next.val){
+                   right = right.next;
+               }
+                left.next = right.next;
+           }else{
+            left = left.next;
+            }
+            right = right.next;
             
-//         }
+        }
         
-//         return dummy.next;
+        return dummy.next;
     }
 }
