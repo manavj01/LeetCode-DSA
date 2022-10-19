@@ -8,7 +8,6 @@ class Solution {
         }
         ArrayList<String>[] freq = new ArrayList[map.size() + 1];
 
-            // Map.Entry<String,Integer> e : map.entrySet()
         for (Map.Entry<String,Integer> e : map.entrySet()) {
             String word = e.getKey();
             int idx = e.getValue();
@@ -17,6 +16,7 @@ class Solution {
             }
             freq[idx].add(word);
         }
+        
         List<String> res = new ArrayList<>();
         for (int z = 0; z < k; z++) {
             res.add("");
@@ -28,7 +28,7 @@ class Solution {
                 size--;
                 continue;
             }
-            Collections.sort(freq[size]);
+           if(freq[size].size() >1) Collections.sort(freq[size]);
             for (int j = 0; j < freq[size].size(); j++) {
                 res.set(k-1, freq[size].get(j));
                 k--;
