@@ -42,8 +42,8 @@ class Solution {
             }
             size--;
         }
-        Collections.reverse(res);
-        System.out.println(res);
+        // Collections.reverse(res);
+        // System.out.println(res);
         return res;
     }
 }
