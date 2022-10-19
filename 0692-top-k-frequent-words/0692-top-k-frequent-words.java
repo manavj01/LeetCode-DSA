@@ -8,9 +8,10 @@ class Solution {
         }
         ArrayList<String>[] freq = new ArrayList[map.size() + 1];
 
-
-        for (String word : map.keySet()) {
-            int idx = map.get(word);
+            // Map.Entry<String,Integer> e : map.entrySet()
+        for (Map.Entry<String,Integer> e : map.entrySet()) {
+            String word = e.getKey();
+            int idx = e.getValue();
             if (freq[idx] == null) {
                 freq[idx] = new ArrayList<>();
             }
