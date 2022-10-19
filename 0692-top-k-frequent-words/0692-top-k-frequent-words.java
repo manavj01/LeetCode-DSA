@@ -6,7 +6,6 @@ class Solution {
         for (String word : words) {
             map.put(word, map.getOrDefault(word, 0) + 1);
         }
-        // System.out.println(map);
         ArrayList<String>[] freq = new ArrayList[map.size() + 1];
 
 
@@ -21,7 +20,6 @@ class Solution {
         for (int z = 0; z < k; z++) {
             res.add("");
         }
-//        System.out.println(Arrays.toString(freq));
 
         int size = freq.length - 1;
         while (size > 0) {
@@ -30,8 +28,6 @@ class Solution {
                 continue;
             }
             Collections.sort(freq[size]);
-//            freq[size].sort();
-
             for (int j = 0; j < freq[size].size(); j++) {
                 res.set(k-1, freq[size].get(j));
                 k--;
@@ -42,8 +38,6 @@ class Solution {
             }
             size--;
         }
-        // Collections.reverse(res);
-        // System.out.println(res);
         return res;
     }
 }
