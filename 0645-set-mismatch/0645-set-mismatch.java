@@ -12,7 +12,7 @@ class Solution {
 
         for (int i = 1; i < arr.length; i++) {
             if (arr[i] == 0) missing = i;
-            if (arr[i] == 2) dup = i;
+           else if (arr[i] == 2) dup = i;
         }
 
         return new int[] { dup, missing };
