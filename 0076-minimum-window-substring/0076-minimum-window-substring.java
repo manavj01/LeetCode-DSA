@@ -14,30 +14,29 @@ class Solution {
         int counter = t.length();
         
         int min = Integer.MAX_VALUE;
-        
+       
         while(right < length){
+            
             char ch = s.charAt(right);
             
             if(map.containsKey(ch)){
-                if(map.get(ch)> 0){
+                if(map.get(ch) > 0){
                     counter--;
                 }
                 map.put(ch, map.getOrDefault(ch,0)-1);
             }
             
             while(counter == 0 && left <= right){
-                if(right-left+1 < min){
+                if(right - left + 1 < min){
                     ansLeft = left;
                     ansRight = right;
                     min = right-left+1;
                 }
-                if(left == right) break;
-                
                 ch = s.charAt(left);
                 
                 if(map.containsKey(ch)){
-                    map.put(ch, map.getOrDefault(ch,0)+1);
-                    
+                    map.put(ch,map.getOrDefault(ch,0)+1);
+                   
                     if(map.get(ch) > 0){
                         counter++;
                     }
