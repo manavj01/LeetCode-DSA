@@ -7,12 +7,11 @@ class Solution {
             map.put(t.charAt(i), map.getOrDefault(t.charAt(i), 0) + 1);
         }
         
+        if(s.length() < t.length()) return "";
         int length = s.length();
         int left = 0, right = 0, ansLeft = 0, ansRight = 0;
         
         int counter = t.length();
-        
-        boolean flag = false;
         
         int min = Integer.MAX_VALUE;
         
