@@ -5,14 +5,12 @@ class Solution {
         StringBuilder sb1 = new StringBuilder();
         StringBuilder sb2 = new StringBuilder();
         for (String word : word1) {
-            for (int i = 0; i < word.length(); i++) {
-                sb1.append(word.charAt(i));
-            }
+                sb1.append(word);
+            
         }
         for (String word : word2) {
-            for (int i = 0; i < word.length(); i++) {
-                sb2.append(word.charAt(i));
-            }
+                sb2.append(word);
+            
         }
         if (sb1.length() != sb2.length()) return false;
 
