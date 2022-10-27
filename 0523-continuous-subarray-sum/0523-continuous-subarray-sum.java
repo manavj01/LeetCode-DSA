@@ -9,9 +9,7 @@ class Solution {
 
             if (map.containsKey(sum % k) && i - map.get(sum % k) > 1) {
                 return true;
-            }
-
-            if (!map.containsKey(sum % k)) {
+            }else if (!map.containsKey(sum % k)) {
                 map.put(sum % k, i);
             }
         }
