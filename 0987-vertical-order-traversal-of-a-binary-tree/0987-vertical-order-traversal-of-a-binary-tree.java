@@ -29,16 +29,20 @@ class Solution {
 
     public List<List<Integer>> verticalTraversal(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
-        PriorityQueue<Pair> que = new PriorityQueue<>((o1,o2)->{
-            if(o1.hl < o2.hl){
-                return -1;
-            }else if(o1.hl > o2.hl){
-                return 1;
-            }else{
-                return Integer.compare(o1.node.val,o2.node.val);
+        if (root == null) return res;
+
+        PriorityQueue<Pair> que = new PriorityQueue<>(
+            (o1, o2) -> {
+                if (o1.hl < o2.hl) {
+                    return -1;
+                } else if (o1.hl > o2.hl) {
+                    return 1;
+                } else {
+                    return Integer.compare(o1.node.val, o2.node.val);
+                }
             }
-        });
-        HashMap<Integer,  ArrayList<Integer>> map = new HashMap<>();
+        );
+        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
 
         que.add(new Pair(root, 0, 0));
 
@@ -53,9 +57,9 @@ class Solution {
             minvl = Math.min(minvl, vl);
             maxvl = Math.max(maxvl, vl);
 
-            map.putIfAbsent(vl,new ArrayList<>());
+            map.putIfAbsent(vl, new ArrayList<>());
             map.get(vl).add(node.val);
-            
+
             if (node.left != null) {
                 que.add(new Pair(node.left, vl - 1, hl + 1));
             }
@@ -65,7 +69,7 @@ class Solution {
             }
         }
 
-         for (int i = minvl; i <= maxvl; i++) {
+        for (int i = minvl; i <= maxvl; i++) {
             res.add(map.get(i));
         }
         return res;
