@@ -65,8 +65,8 @@ class Solution {
             }
         }
 
-        for(int i = 0 ; i< map.size() ; i++){
-            res.add(new ArrayList<>(map.get(minvl++)));
+         for (int i = minvl; i <= maxvl; i++) {
+            res.add(map.get(i));
         }
         return res;
     }
