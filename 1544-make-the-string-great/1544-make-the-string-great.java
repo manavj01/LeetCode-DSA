@@ -15,6 +15,7 @@ class Solution {
             for (int i = 0; i < sb.length() - 1; i++) {
                 if (Math.abs(sb.charAt(i) - sb.charAt(i+1)) == 32) {
                    flag = true;
+                    break;
                 }
             }
             if(!flag || sb.length() == 0){
