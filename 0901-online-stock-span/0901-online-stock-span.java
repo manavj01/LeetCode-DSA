@@ -8,9 +8,9 @@ class StockSpanner {
             this.second = second;
         }
     }
-    Stack<Pair> stack ;
+    Stack<Pair> stack = new Stack<>();
     public StockSpanner() {
-        stack = new Stack<>();
+        // stack = 
     }
     
     public int next(int price) {
